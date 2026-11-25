@@ -1,0 +1,10 @@
+{
+  "name": "Barakah — Scroll with benefit",
+  "short_name": "Barakah",
+  "description": "Verified Islamic reminders and lectures, nothing else.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF6EC",
+  "theme_color": "#0F5C4D",
+  "orientation": "portrait"
+}
