@@ -23,26 +23,26 @@ function formatCompactCount(num: number): string {
 interface SingleReelStageProps {
   clip: SimulatedFeedClip;
   index: number;
-  totalSessionClips: number;
   isActive: boolean;
   isMuted: boolean;
+  feedTab: "following" | "explore";
+  onChangeFeedTab: (tab: "following" | "explore") => void;
   onToggleMute: () => void;
   onOpenComments: () => void;
   onClipEndedOrCapped: () => void;
-  onJumpToCaughtUp: () => void;
   onShowToast: (msg: string) => void;
 }
 
 function SingleReelStage({
   clip,
   index,
-  totalSessionClips,
   isActive,
   isMuted,
+  feedTab,
+  onChangeFeedTab,
   onToggleMute,
   onOpenComments,
   onClipEndedOrCapped,
-  onJumpToCaughtUp,
   onShowToast,
 }: SingleReelStageProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -157,36 +157,51 @@ function SingleReelStage({
       {/* Deep Atmospheric Bottom Gradient for Caption & HUD Contrast */}
       <div className="absolute inset-x-0 bottom-0 h-96 bg-linear-to-t from-black/90 via-black/45 to-transparent pointer-events-none z-10" />
 
-      {/* Top Floating Status & Action Bar */}
+      {/* Top Floating Status & Action Bar (Updated per Stitch 41fc6e31122045dc87db8389ed5475d0) */}
       <header className="absolute top-0 inset-x-0 z-30 px-4 py-3 flex items-center justify-between">
-        {/* Left: Floating Brand / Reel Pill */}
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/35 backdrop-blur-md border border-white/10 shadow-2xs">
-            <img
-              alt="Barakah App Logo"
-              className="h-4 w-4 object-contain rounded-xs brightness-110"
-              src="/images/barakah-logo.png"
-            />
-            <span className="text-[13px] leading-4 text-white font-bold tracking-tight">
-              Barakah
-            </span>
-          </div>
+        {/* Left: Following & Explore Feed Switcher */}
+        <div className="flex items-center gap-5 text-base leading-6 select-none">
+          <button
+            type="button"
+            onClick={() => onChangeFeedTab("following")}
+            className={`relative py-1 flex flex-col items-center whitespace-nowrap transition-colors cursor-pointer ${
+              feedTab === "following"
+                ? "text-white font-bold"
+                : "text-white/70 hover:text-white font-medium"
+            }`}
+          >
+            <span>Following</span>
+            {feedTab === "following" && (
+              <span className="absolute -bottom-0.5 w-4 h-0.5 rounded-full bg-secondary-container" />
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onChangeFeedTab("explore")}
+            className={`relative py-1 flex flex-col items-center whitespace-nowrap transition-colors cursor-pointer ${
+              feedTab === "explore"
+                ? "text-white font-bold"
+                : "text-white/70 hover:text-white font-medium"
+            }`}
+          >
+            <span>Explore</span>
+            {feedTab === "explore" && (
+              <span className="absolute -bottom-0.5 w-4 h-0.5 rounded-full bg-secondary-container" />
+            )}
+          </button>
         </div>
 
-        {/* Right: Finite Session Pill Indicator, Audio Toggle, & Search Action */}
-        <div className="flex items-center gap-2">
-          {/* Daily Session Finite Diet Pill Indicator */}
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/35 backdrop-blur-md border border-white/10 shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-secondary-container animate-pulse" />
-            <span className="text-[11px] leading-3.5 text-white/90 tracking-wide">
-              <span className="font-bold text-secondary-container">
-                {index + 1}
-              </span>{" "}
-              of {totalSessionClips} today
-            </span>
-          </div>
+        {/* Right: Search, Sound & Profile Avatar with generous spacing from tabs */}
+        <div className="flex items-center gap-2.5 ml-auto">
+          <Link
+            href="/library"
+            aria-label="Search Feed"
+            className="w-8 h-8 rounded-full bg-black/35 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/90 active:scale-95 transition-transform"
+          >
+            <span className="material-symbols-outlined text-lg">search</span>
+          </Link>
 
-          {/* Sound Control Button */}
           <button
             type="button"
             aria-label="Toggle Audio"
@@ -201,13 +216,16 @@ function SingleReelStage({
             </span>
           </button>
 
-          {/* Search Action Button */}
           <Link
-            href="/library"
-            aria-label="Search Feed"
-            className="w-8 h-8 rounded-full bg-black/35 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/90 active:scale-95 transition-transform"
+            href="/profile"
+            aria-label="User Profile"
+            className="w-8 h-8 rounded-full border border-white/20 overflow-hidden shrink-0 cursor-pointer active:scale-95 transition-transform"
           >
-            <span className="material-symbols-outlined text-lg">search</span>
+            <img
+              alt="User Profile"
+              className="w-full h-full object-cover"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTjBYUNCtw6WFjawNCFE3YA3Vc-TqmysjuMM4ewsZVd_5ERBfPb4_8KGyeo4X_oeGpuIUGfjkJeqdNy6y5txGanG6eTcLYmK3EUzGEo_pWOuw9-sEJeUDzs1hC6JxA6g171cBYo8YCU88GkA41M4LkkeF3xVXGCwBW6q6eHQqogo8qtKy9fXVW0pkWkZ2BRprBgQungDCiaIgpP4VLOYdsGmC3V9GcmUV5dKDNmGI"
+            />
           </Link>
         </div>
       </header>
@@ -230,7 +248,7 @@ function SingleReelStage({
         </div>
       </div>
 
-      {/* Right Edge Floating Action Rail (Like, Comment, Bookmark, Share — Offline & Rotating Avatar Removed per Stitch) */}
+      {/* Right Edge Floating Action Rail (Shorts / Reels System) */}
       <aside className="absolute right-3.5 bottom-24 z-30 flex flex-col items-center gap-4">
         {/* Like Action */}
         <button
@@ -367,10 +385,20 @@ function SingleReelStage({
 
           <button
             type="button"
-            onClick={() => setIsFollowing((prev) => !prev)}
-            className="ml-1 px-3 py-1 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/25 text-white text-xs leading-4 font-semibold tracking-wide active:scale-95 transition-all shrink-0 cursor-pointer"
+            onClick={() => {
+              setIsFollowing((prev) => !prev);
+              onShowToast(
+                !isFollowing
+                  ? `Following ${clip.scholar}`
+                  : `Unfollowed ${clip.scholar}`
+              );
+            }}
+            className="ml-1 px-3 py-1 rounded-full bg-primary-container/80 hover:bg-primary-container text-primary-fixed border border-primary-fixed/30 backdrop-blur-md text-[11.5px] leading-4 font-semibold tracking-wide active:scale-95 transition-all shrink-0 flex items-center gap-1 shadow-2xs cursor-pointer"
           >
-            {isFollowing ? "Following" : "Follow"}
+            <span className="material-symbols-outlined text-[13px]">
+              {isFollowing ? "check" : "add"}
+            </span>
+            <span>{isFollowing ? "Following" : "Follow"}</span>
           </button>
         </div>
 
@@ -431,6 +459,7 @@ export function HomeFeedView({ initialMode = "feed" }: HomeFeedViewProps) {
   const [mode, setMode] = useState<"feed" | "comments" | "caught-up">(
     initialMode
   );
+  const [feedTab, setFeedTab] = useState<"following" | "explore">("explore");
   const [activeClipIndex, setActiveClipIndex] = useState(0);
   const [sessionLimit, setSessionLimit] = useState(20);
   const [isMuted, setIsMuted] = useState(true);
@@ -525,20 +554,27 @@ export function HomeFeedView({ initialMode = "feed" }: HomeFeedViewProps) {
             key={`${clip.id}-${idx}`}
             clip={clip}
             index={idx}
-            totalSessionClips={sessionLimit}
             isActive={idx === activeClipIndex}
             isMuted={isMuted}
+            feedTab={feedTab}
+            onChangeFeedTab={(tab) => {
+              setFeedTab(tab);
+              showToast(
+                tab === "following"
+                  ? "Showing scholars you follow"
+                  : "Exploring verified reminders"
+              );
+            }}
             onToggleMute={() => setIsMuted((prev) => !prev)}
             onOpenComments={() => setMode("comments")}
             onClipEndedOrCapped={() => scrollToClipIndex(idx + 1)}
-            onJumpToCaughtUp={() => setMode("caught-up")}
             onShowToast={showToast}
           />
         ))}
       </div>
 
-      {/* Bottom Navigation Bar */}
-      <BottomNav activeTab="home" />
+      {/* Sleek Dark Frosted Glass Bottom Navigation Bar */}
+      <BottomNav activeTab="home" variant="dark" />
     </div>
   );
 }
