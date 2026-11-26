@@ -1,19 +1,16 @@
+import { PublicProfileView, PUBLIC_CREATORS } from "@/components/profile";
+
 export function generateStaticParams() {
-  return [{ username: "omarsuleiman" }, { username: "bilalismail" }];
+  return Object.keys(PUBLIC_CREATORS).map((username) => ({ username }));
+}
+
+interface CreatorProfilePageProps {
+  params: Promise<{ username: string }>;
 }
 
 export default async function CreatorProfilePage({
   params,
-}: {
-  params: Promise<{ username: string }>;
-}) {
+}: CreatorProfilePageProps) {
   const { username } = await params;
-  return (
-    <section className="p-6">
-      <h1 className="text-2xl font-bold">@{username}</h1>
-      <p className="text-muted mt-1">
-        Verified scholar / source profile and clips.
-      </p>
-    </section>
-  );
+  return <PublicProfileView handle={username} />;
 }

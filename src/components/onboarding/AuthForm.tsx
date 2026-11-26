@@ -14,6 +14,7 @@ export function AuthForm({ initialMode = "signup" }: AuthFormProps) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [country, setCountry] = useState("US");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -199,6 +200,58 @@ export function AuthForm({ initialMode = "signup" }: AuthFormProps) {
               </button>
             </div>
           </div>
+
+          {/* Country / Region Field from Stitch Sign Up Screen (Sign Up only) */}
+          {isSignup && (
+            <div
+              className="flex flex-col gap-4 transition-all"
+              id="signup-demographics"
+            >
+              <div className="flex flex-col gap-1.5">
+                <label
+                  className="text-xs leading-4 font-medium text-on-surface-variant px-1"
+                  htmlFor="country"
+                >
+                  Country / Region
+                </label>
+                <div className="relative flex items-center bg-surface-container-lowest rounded-2xl shadow-2xs px-4 py-3.5">
+                  <span className="material-symbols-outlined text-outline text-xl mr-3">
+                    public
+                  </span>
+                  <select
+                    id="country"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                    className="w-full bg-transparent text-sm leading-5 text-on-surface focus:outline-none appearance-none cursor-pointer pr-6"
+                  >
+                    <option value="US">United States 🇺🇸</option>
+                    <option value="GB">United Kingdom 🇬🇧</option>
+                    <option value="CA">Canada 🇨🇦</option>
+                    <option value="AE">United Arab Emirates 🇦🇪</option>
+                    <option value="SA">Saudi Arabia 🇸🇦</option>
+                    <option value="PK">Pakistan 🇵🇰</option>
+                    <option value="ID">Indonesia 🇮🇩</option>
+                    <option value="MY">Malaysia 🇲🇾</option>
+                    <option value="TR">Turkey 🇹🇷</option>
+                    <option value="OTHER">Other Country / Region</option>
+                  </select>
+                  <span className="material-symbols-outlined text-outline text-xl absolute right-4 pointer-events-none">
+                    expand_more
+                  </span>
+                </div>
+              </div>
+
+              {/* <div className="flex items-center gap-1.5 px-1 -mt-1">
+                <span className="material-symbols-outlined text-outline text-sm">
+                  lock
+                </span>
+                <p className="text-[11px] leading-3.5 text-on-surface-variant">
+                  Used gently for prayer times &amp; tailored content. Never
+                  shared.
+                </p>
+              </div> */}
+            </div>
+          )}
 
           {/* Primary CTA */}
           <button

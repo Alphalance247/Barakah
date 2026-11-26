@@ -20,6 +20,43 @@ export const BARAKAH_TOPICS: TopicItem[] = [
   { id: "youth", name: "Youth", clipCount: 58, isCoreLibrary: false },
 ];
 
+export const BARAKAH_COUNTRIES = [
+  "Nigeria",
+  "United Kingdom",
+  "United States",
+  "Saudi Arabia",
+  "United Arab Emirates",
+  "Malaysia",
+  "Indonesia",
+  "Egypt",
+  "Pakistan",
+  "Turkey",
+  "Canada",
+  "Australia",
+  "South Africa",
+  "Qatar",
+  "Morocco",
+  "Jordan",
+  "Germany",
+  "France",
+  "Other",
+] as const;
+
+export const BARAKAH_AGE_GROUPS = [
+  "Under 18",
+  "18–24",
+  "25–34",
+  "35–49",
+  "50+",
+  "Prefer not to say",
+] as const;
+
+export const BARAKAH_GENDERS = [
+  { id: "brother", label: "Brother" },
+  { id: "sister", label: "Sister" },
+  { id: "unspecified", label: "Prefer not to say" },
+] as const;
+
 export const SESSION_CLIP_LIMIT = 20;
 export const MIN_ONBOARDING_TOPICS = 3;
 /** Every clip in Barakah is strictly capped at 1 minute 30 seconds (90 seconds) */

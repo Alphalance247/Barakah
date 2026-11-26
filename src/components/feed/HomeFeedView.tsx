@@ -10,8 +10,8 @@ import {
   SIMULATED_FEED_CLIPS,
   type SimulatedFeedClip,
 } from "@/data/seed";
+import { resolveCreatorSlug } from "@/components/profile";
 import { MAX_CLIP_DURATION_SECONDS } from "@/constants/barakah";
-import { formatBarakahDownloadFilename } from "@/utils";
 
 function formatCompactCount(num: number): string {
   if (num >= 1000) {
@@ -55,6 +55,7 @@ function SingleReelStage({
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(index === 0);
   const [isFollowing, setIsFollowing] = useState(false);
+  const [isCaptionExpanded, setIsCaptionExpanded] = useState(false);
 
   // Sync play/pause when user scrolls this reel into or out of view
   useEffect(() => {
@@ -122,17 +123,6 @@ function SingleReelStage({
     setTimeout(() => setShowPlayBadge(false), 650);
   };
 
-  const handleDownload = () => {
-    const filename = formatBarakahDownloadFilename(clip.scholar, clip.ayahRef);
-    const link = document.createElement("a");
-    link.href = clip.videoSrc;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    onShowToast(`Downloading ${filename}`);
-  };
-
   const progressPercent =
     cappedDuration > 0
       ? Math.min(100, (currentTime / cappedDuration) * 100)
@@ -147,7 +137,7 @@ function SingleReelStage({
 
   return (
     <div className="snap-start shrink-0 relative w-full h-dvh overflow-hidden bg-black select-none">
-      {/* Unobstructed Video Layer (YouTube Shorts / Instagram Reels style on pure black stage) */}
+      {/* Unobstructed Video Layer */}
       <video
         ref={videoRef}
         src={clip.videoSrc}
@@ -161,14 +151,14 @@ function SingleReelStage({
         className="absolute inset-0 w-full h-[calc(100dvh-5rem)] object-contain bg-black"
       />
 
-      {/* Calibrated Scrim Overlays (Reels/Shorts Style — No muddy blur covering the video) */}
+      {/* Calibrated Scrim Overlays (Reels/Shorts Style) */}
       {/* Subtle Top Scrim for Status and Navigation Controls */}
-      <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-black/70 via-black/25 to-transparent pointer-events-none z-10" />
-      {/* Clean Bottom Gradient for Caption & HUD Contrast */}
-      <div className="absolute inset-x-0 bottom-20 h-64 bg-linear-to-t from-black/85 via-black/40 to-transparent pointer-events-none z-10" />
+      <div className="absolute inset-x-0 top-0 h-36 bg-linear-to-b from-black/75 via-black/30 to-transparent pointer-events-none z-10" />
+      {/* Deep Atmospheric Bottom Gradient for Caption & HUD Contrast */}
+      <div className="absolute inset-x-0 bottom-0 h-96 bg-linear-to-t from-black/90 via-black/45 to-transparent pointer-events-none z-10" />
 
       {/* Top Floating Status & Action Bar */}
-      <header className="absolute top-0 inset-x-0 z-30 px-4 py-3.5 flex items-center justify-between">
+      <header className="absolute top-0 inset-x-0 z-30 px-4 py-3 flex items-center justify-between">
         {/* Left: Floating Brand / Reel Pill */}
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/35 backdrop-blur-md border border-white/10 shadow-2xs">
@@ -186,12 +176,7 @@ function SingleReelStage({
         {/* Right: Finite Session Pill Indicator, Audio Toggle, & Search Action */}
         <div className="flex items-center gap-2">
           {/* Daily Session Finite Diet Pill Indicator */}
-          <button
-            type="button"
-            onClick={onJumpToCaughtUp}
-            title="Tap to preview All Caught Up (20 of 20)"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/35 backdrop-blur-md border border-white/10 shadow-2xs hover:bg-black/50 transition-colors cursor-pointer"
-          >
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/35 backdrop-blur-md border border-white/10 shadow-2xs">
             <span className="w-1.5 h-1.5 rounded-full bg-secondary-container animate-pulse" />
             <span className="text-[11px] leading-3.5 text-white/90 tracking-wide">
               <span className="font-bold text-secondary-container">
@@ -199,7 +184,7 @@ function SingleReelStage({
               </span>{" "}
               of {totalSessionClips} today
             </span>
-          </button>
+          </div>
 
           {/* Sound Control Button */}
           <button
@@ -245,7 +230,7 @@ function SingleReelStage({
         </div>
       </div>
 
-      {/* Right Edge Floating Action Rail (Shorts / Reels System) */}
+      {/* Right Edge Floating Action Rail (Like, Comment, Bookmark, Share — Offline & Rotating Avatar Removed per Stitch) */}
       <aside className="absolute right-3.5 bottom-24 z-30 flex flex-col items-center gap-4">
         {/* Like Action */}
         <button
@@ -256,7 +241,7 @@ function SingleReelStage({
           <div className="w-11 h-11 rounded-full bg-black/35 backdrop-blur-md border border-white/10 flex items-center justify-center text-white shadow-md active:scale-90 transition-all duration-200">
             <span
               className={`material-symbols-outlined text-2xl drop-shadow-md transition-colors ${
-                isLiked ? "text-error-container" : ""
+                isLiked ? "text-error" : ""
               }`}
               style={{
                 fontVariationSettings: isLiked ? "'FILL' 1" : "'FILL' 0",
@@ -324,22 +309,6 @@ function SingleReelStage({
           </span>
         </button>
 
-        {/* Save Offline / Download */}
-        <button
-          type="button"
-          onClick={handleDownload}
-          className="flex flex-col items-center group focus:outline-none cursor-pointer"
-        >
-          <div className="w-11 h-11 rounded-full bg-black/35 backdrop-blur-md border border-white/10 flex items-center justify-center text-white shadow-md active:scale-90 transition-all duration-200">
-            <span className="material-symbols-outlined text-2xl drop-shadow-md">
-              download_for_offline
-            </span>
-          </div>
-          <span className="text-[11px] leading-3.5 text-white/95 mt-1 drop-shadow-md font-medium">
-            Offline
-          </span>
-        </button>
-
         {/* Share Action */}
         <button
           type="button"
@@ -355,22 +324,16 @@ function SingleReelStage({
             Share
           </span>
         </button>
-
-        {/* Audio Disc / Creator Vinyl Indicator */}
-        <div className="w-10 h-10 rounded-full p-0.5 mt-1 bg-linear-to-tr from-secondary-container via-primary-container to-primary-fixed shadow-lg animate-[spin_7s_linear_infinite] cursor-pointer">
-          <img
-            alt="Audio track source"
-            className="w-full h-full rounded-full object-cover border border-black/40"
-            src={clip.avatar}
-          />
-        </div>
       </aside>
 
-      {/* Bottom Content Overlay (Modern Instagram Reels & YouTube Shorts System — Clean, No Banner/Tag Clutter) */}
-      <div className="absolute bottom-24 left-0 right-16 z-25 px-4 flex flex-col gap-2 max-w-[84%]">
+      {/* Bottom Content Overlay (Modern Instagram Reels & YouTube Shorts System) */}
+      <div className="absolute bottom-24 left-0 right-18 z-25 px-4 flex flex-col gap-2 max-w-[84%]">
         {/* Creator Identity Row */}
         <div className="flex items-center gap-2.5">
-          <div className="relative shrink-0">
+          <Link
+            href={`/creator/${resolveCreatorSlug(clip.scholar)}`}
+            className="relative shrink-0 hover:opacity-90 transition-opacity"
+          >
             <img
               alt={clip.scholar}
               className="w-10 h-10 rounded-full object-cover border border-white/40 shadow-md"
@@ -381,38 +344,60 @@ function SingleReelStage({
                 check
               </span>
             </div>
-          </div>
+          </Link>
 
-          <div className="flex flex-col min-w-0">
-            <div className="flex items-center gap-1.5">
-              <span className="text-sm leading-5 text-white font-bold drop-shadow-xs truncate">
-                {clip.scholar}
-              </span>
-              <span
-                className="material-symbols-outlined text-secondary-container text-base drop-shadow-xs shrink-0"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                stars
-              </span>
-            </div>
+          <Link
+            href={`/creator/${resolveCreatorSlug(clip.scholar)}`}
+            className="flex items-center gap-2 flex-wrap min-w-0 hover:underline decoration-white/70"
+          >
+            <span className="text-sm leading-5 text-white font-bold drop-shadow-xs truncate">
+              {clip.scholar}
+            </span>
+            <span
+              className="material-symbols-outlined text-secondary-container text-base drop-shadow-xs shrink-0"
+              style={{ fontVariationSettings: "'FILL' 1" }}
+            >
+              stars
+            </span>
+            <span className="text-white/60 text-xs font-normal">•</span>
             <span className="text-xs leading-4 text-white/80 truncate drop-shadow-xs">
               {clip.institute}
             </span>
-          </div>
+          </Link>
 
           <button
             type="button"
             onClick={() => setIsFollowing((prev) => !prev)}
-            className="ml-1 px-3.5 py-1 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/25 text-white text-xs leading-4 font-semibold tracking-wide active:scale-95 transition-all shrink-0 cursor-pointer"
+            className="ml-1 px-3 py-1 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/25 text-white text-xs leading-4 font-semibold tracking-wide active:scale-95 transition-all shrink-0 cursor-pointer"
           >
             {isFollowing ? "Following" : "Follow"}
           </button>
         </div>
 
-        {/* Reel Caption / Title */}
-        <p className="text-[13.5px] leading-relaxed text-white/95 drop-shadow-md line-clamp-2 pr-2">
-          {clip.caption}
-        </p>
+        {/* Reel Caption / Title: 1-line truncated with inline "See more" expansion */}
+        {isCaptionExpanded ? (
+          <div className="text-[13.5px] leading-relaxed text-white/95 drop-shadow-md pr-2">
+            <span>{clip.caption} </span>
+            <button
+              type="button"
+              onClick={() => setIsCaptionExpanded(false)}
+              className="font-semibold text-white/80 hover:text-white text-xs transition-colors cursor-pointer"
+            >
+              See less
+            </button>
+          </div>
+        ) : (
+          <div className="flex items-baseline gap-1 text-[13.5px] text-white/95 drop-shadow-md pr-2">
+            <span className="truncate">{clip.caption}</span>
+            <button
+              type="button"
+              onClick={() => setIsCaptionExpanded(true)}
+              className="font-semibold text-white/80 hover:text-white shrink-0 text-xs transition-colors cursor-pointer"
+            >
+              See more
+            </button>
+          </div>
+        )}
 
         {/* Modern Audio / Sound Tag */}
         <div className="flex items-center gap-2 text-white/85 pt-0.5">
@@ -428,7 +413,7 @@ function SingleReelStage({
       {/* Scrubber Timeline Progress Bar (Flush Right Above Bottom Navigation) */}
       <div className="absolute bottom-20 inset-x-0 h-1 bg-white/20 z-30">
         <div
-          className="h-full bg-secondary-container relative transition-all duration-200"
+          className="h-full bg-secondary-container relative transition-all duration-300"
           style={{ width: `${progressPercent}%` }}
         >
           <span className="absolute right-0 -top-1 w-3 h-3 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(254,206,101,0.9)] scale-75" />
@@ -550,33 +535,9 @@ export function HomeFeedView({ initialMode = "feed" }: HomeFeedViewProps) {
             onShowToast={showToast}
           />
         ))}
-
-        {/* Final Snap Slide at the bottom of the 20 clips: Transitions to All Caught Up */}
-        <div className="snap-start shrink-0 w-full h-dvh bg-black px-6 pb-20 flex flex-col items-center justify-center text-center gap-3">
-          <span
-            className="material-symbols-outlined text-secondary-container text-4xl"
-            style={{ fontVariationSettings: "'FILL' 1" }}
-          >
-            wb_twilight
-          </span>
-          <h3 className="text-xl font-bold text-white">
-            You&apos;ve reached clip {sessionLimit} of {sessionLimit}
-          </h3>
-          <p className="text-sm text-white/75 max-w-xs">
-            Alhamdulillah, you completed today&apos;s finite feed of 1m 30s
-            reflections.
-          </p>
-          <button
-            type="button"
-            onClick={() => setMode("caught-up")}
-            className="mt-2 px-6 py-3 rounded-full bg-primary-container text-white text-sm font-semibold shadow-md hover:bg-primary-dark transition-colors cursor-pointer"
-          >
-            View All Caught Up Summary
-          </button>
-        </div>
       </div>
 
-      {/* Bottom Navigation Bar (Unchanged 4 tabs + center Submit button) */}
+      {/* Bottom Navigation Bar */}
       <BottomNav activeTab="home" />
     </div>
   );

@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { containsProfanity } from "@/lib/profanityFilter";
+import { resolveCreatorSlug } from "@/components/profile";
 
 interface CommentData {
   id: string;
@@ -224,16 +226,24 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <img
-                    alt={comment.author}
-                    className="w-10 h-10 rounded-full object-cover shrink-0 shadow-xs"
-                    src={comment.avatar}
-                  />
+                  <Link
+                    href={`/creator/${resolveCreatorSlug(comment.author)}`}
+                    className="shrink-0 hover:opacity-90 transition-opacity"
+                  >
+                    <img
+                      alt={comment.author}
+                      className="w-10 h-10 rounded-full object-cover shadow-xs"
+                      src={comment.avatar}
+                    />
+                  </Link>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1.5 flex-wrap">
-                      <span className="text-sm leading-5 text-on-surface font-semibold">
+                      <Link
+                        href={`/creator/${resolveCreatorSlug(comment.author)}`}
+                        className="text-sm leading-5 text-on-surface font-semibold hover:underline"
+                      >
                         {comment.author}
-                      </span>
+                      </Link>
                       {comment.isVerified && (
                         <span
                           className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] shadow-2xs"
