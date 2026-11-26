@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { MaterialIcon } from "@/components/common/MaterialIcon";
 
 interface AllCaughtUpViewProps {
   watchedCount?: number;
@@ -82,27 +83,17 @@ export function AllCaughtUpView({
           {/* Illuminated Icon Container */}
           <div className="relative z-10 w-24 h-24 rounded-full bg-surface-container-low flex flex-col items-center justify-center shadow-md">
             <div className="relative flex items-center justify-center">
-              <span
-                className="material-symbols-outlined text-secondary text-4xl"
+              <MaterialIcon name="wb_twilight" className="text-secondary text-4xl"
                 style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                wb_twilight
-              </span>
-              <span
-                className="material-symbols-outlined text-primary-dark text-[28px] absolute -bottom-1"
+               />
+              <MaterialIcon name="menu_book" className="text-primary-dark text-[28px] absolute -bottom-1"
                 style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                menu_book
-              </span>
+               />
             </div>
           </div>
           {/* Floating Ambient Star Accents */}
-          <span className="material-symbols-outlined absolute -top-1 -right-2 text-secondary text-lg">
-            arrow_back_ios_new
-          </span>
-          <span className="material-symbols-outlined absolute bottom-1 -left-2 text-primary-fixed-dim text-base">
-            auto_awesome
-          </span>
+          <MaterialIcon name="arrow_back_ios_new" className="absolute -top-1 -right-2 text-secondary text-lg" />
+          <MaterialIcon name="auto_awesome" className="absolute bottom-1 -left-2 text-primary-fixed-dim text-base" />
         </div>
 
         {/* Main Completion Headline */}
@@ -132,12 +123,9 @@ export function AllCaughtUpView({
 
         {/* Mindful Consumption Summary Pill */}
         <div className="relative z-10 w-full max-w-xs bg-surface-container-high/80 rounded-xl px-4 py-2.5 flex items-center justify-center gap-1.5 mb-6">
-          <span
-            className="material-symbols-outlined text-primary-dark text-lg"
+          <MaterialIcon name="spa" className="text-primary-dark text-lg"
             style={{ fontVariationSettings: "'FILL' 1" }}
-          >
-            spa
-          </span>
+           />
           <span className="text-xs leading-4 text-primary-dark font-medium text-center">
             24 mins mindful study • 0 doomscrolling
           </span>
@@ -150,12 +138,9 @@ export function AllCaughtUpView({
             className="w-full h-12 rounded-full bg-primary-container text-on-primary flex items-center justify-center gap-2 text-sm leading-5 font-semibold shadow-xs hover:opacity-95 active:scale-[0.98] transition-all"
             href="/saved"
           >
-            <span
-              className="material-symbols-outlined text-xl"
+            <MaterialIcon name="bookmark" className="text-xl"
               style={{ fontVariationSettings: "'FILL' 1" }}
-            >
-              bookmark
-            </span>
+             />
             <span>Open saved clips</span>
           </Link>
 
@@ -164,9 +149,7 @@ export function AllCaughtUpView({
             className="w-full h-12 rounded-full bg-surface-container-low text-primary-dark flex items-center justify-center gap-2 text-sm leading-5 font-semibold hover:bg-surface-container transition-all"
             href="/library"
           >
-            <span className="material-symbols-outlined text-xl">
-              explore
-            </span>
+            <MaterialIcon name="explore" className="text-xl" />
             <span>Browse library by topic</span>
           </Link>
         </div>
@@ -186,9 +169,7 @@ export function AllCaughtUpView({
       {/* Introspective Prompt Card (Moment of Delight & Dhikr) */}
       <div className="mt-4 w-full rounded-2xl bg-surface-container p-4 flex items-start gap-4">
         <div className="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center shrink-0 text-primary-dark">
-          <span className="material-symbols-outlined text-[22px]">
-            psychology_alt
-          </span>
+          <MaterialIcon name="psychology_alt" className="text-[22px]" />
         </div>
         <div className="flex-1 min-w-0">
           <span className="text-[11px] leading-3.5 text-secondary font-semibold uppercase tracking-wider block">

@@ -50,12 +50,6 @@ export default function RootLayout({
       dir="ltr"
       className={`${plusJakartaSans.variable} ${inter.variable} ${amiri.variable} h-full antialiased`}
     >
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className="min-h-full flex flex-col bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
         {children}
       </body>

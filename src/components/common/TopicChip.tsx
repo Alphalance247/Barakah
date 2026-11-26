@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { MdCheck } from "react-icons/md";
 
 interface TopicChipProps {
   name: string;
@@ -20,7 +20,7 @@ export function TopicChip({ name, selected = false, onClick }: TopicChipProps) {
           : "bg-surface border border-soft-tint text-foreground hover:bg-soft-tint/60"
       }`}
     >
-      {selected ? <Check size={16} className="shrink-0" /> : null}
+      {selected ? <MdCheck size={16} className="shrink-0" /> : null}
       <span>{name}</span>
     </button>
   );

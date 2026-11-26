@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { MaterialIcon } from "@/components/common/MaterialIcon";
 
 interface OnboardingTopicCard {
   id: string;
@@ -135,9 +136,7 @@ export function InterestSelector() {
             aria-label="Go back"
             className="flex items-center justify-center w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all text-on-surface"
           >
-            <span className="material-symbols-outlined text-xl">
-              arrow_back
-            </span>
+            <MaterialIcon name="arrow_back" className="text-xl" />
           </Link>
 
           {/* Multi-step Indicator: Step 2 of 3 */}
@@ -170,9 +169,7 @@ export function InterestSelector() {
         {/* Title & Intent Section */}
         <section className="mt-2 mb-4 relative z-10">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low text-primary-dark mb-2.5">
-            <span className="material-symbols-outlined text-[15px] text-secondary">
-              auto_awesome
-            </span>
+            <MaterialIcon name="auto_awesome" className="text-[15px] text-secondary" />
             <span className="text-[11px] leading-3.5 font-medium tracking-wide">
               Intentional Daily Learning
             </span>
@@ -193,12 +190,9 @@ export function InterestSelector() {
                 : "bg-surface-container"
             }`}
           >
-            <span
-              className="material-symbols-outlined text-lg text-secondary"
+            <MaterialIcon name="check_circle" className="text-lg text-secondary"
               style={{ fontVariationSettings: "'FILL' 1" }}
-            >
-              check_circle
-            </span>
+             />
             <span className="text-xs leading-4 font-semibold text-primary-dark">
               {isMinReached
                 ? `Selected: ${count} topics • Minimum 3 reached`
@@ -238,22 +232,17 @@ export function InterestSelector() {
                         : "bg-surface-container text-on-surface-variant"
                     }`}
                   >
-                    <span
-                      className="material-symbols-outlined text-xl"
+                    <MaterialIcon name={topic.icon} className="text-xl"
                       style={{
                         fontVariationSettings: topic.filledIcon
                           ? "'FILL' 1"
                           : "'FILL' 0",
                       }}
-                    >
-                      {topic.icon}
-                    </span>
+                     />
                   </div>
                   {isSelected && (
-                    <div className="flex items-center justify-center w-5 h-5 rounded-full bg-primary-dark text-on-primary">
-                      <span className="material-symbols-outlined text-sm">
-                        check
-                      </span>
+                    <div className="flex items-center justify-center w-5 h-5 rounded-full bg-primary-dark text-on-primary overflow-hidden">
+                      <MaterialIcon name="check" className="text-xs leading-none" />
                     </div>
                   )}
                 </div>
@@ -295,9 +284,7 @@ export function InterestSelector() {
               }`}
             >
               <span>Continue to Feed</span>
-              <span className="material-symbols-outlined text-lg">
-                arrow_forward
-              </span>
+              <MaterialIcon name="arrow_forward" className="text-lg" />
             </button>
 
             {/* Sanctuary Feed Boundary Clarification */}

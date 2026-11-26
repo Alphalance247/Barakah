@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { MaterialIcon } from "@/components/common/MaterialIcon";
 
 export function ForgotPasswordForm() {
   const [email, setEmail] = useState("");
@@ -26,17 +27,12 @@ export function ForgotPasswordForm() {
             aria-label="Back to Log In"
             className="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-dark transition-colors active:bg-surface-container-high"
           >
-            <span className="material-symbols-outlined text-xl">
-              arrow_back
-            </span>
+            <MaterialIcon name="arrow_back" className="text-xl" />
           </Link>
           <div className="flex items-center gap-1.5 opacity-80">
-            <span
-              className="material-symbols-outlined text-primary-container text-lg"
+            <MaterialIcon name="spa" className="text-primary-container text-lg"
               style={{ fontVariationSettings: "'FILL' 1" }}
-            >
-              spa
-            </span>
+             />
             <span className="text-lg leading-6 font-semibold text-primary-dark tracking-wide">
               Barakah
             </span>
@@ -50,21 +46,15 @@ export function ForgotPasswordForm() {
             {/* Ambient gentle glow ring */}
             <div className="absolute inset-0 rounded-full bg-primary-dark/5 animate-pulse" />
             <div className="relative w-14 h-14 rounded-full bg-primary-container flex items-center justify-center shadow-md">
-              <span
-                className="material-symbols-outlined text-secondary-fixed text-[28px]"
+              <MaterialIcon name="key" className="text-secondary-fixed text-[28px]"
                 style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                key
-              </span>
+               />
             </div>
             {/* Petite floating serene accent star */}
             <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center shadow-2xs">
-              <span
-                className="material-symbols-outlined text-on-secondary-container text-sm"
+              <MaterialIcon name="arrow_back_ios_new" className="text-on-secondary-container text-sm"
                 style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                arrow_back_ios_new
-              </span>
+               />
             </div>
           </div>
 
@@ -90,7 +80,7 @@ export function ForgotPasswordForm() {
             </label>
             <div className="relative flex items-center w-full bg-surface-container-lowest rounded-xl shadow-2xs transition-all focus-within:shadow-md">
               <div className="absolute left-4 flex items-center justify-center text-outline pointer-events-none">
-                <span className="material-symbols-outlined text-xl">mail</span>
+                <MaterialIcon name="mail" className="text-xl" />
               </div>
               <input
                 id="emailInput"
@@ -117,24 +107,18 @@ export function ForgotPasswordForm() {
             {status === "idle" && (
               <>
                 <span>Send Reset Link</span>
-                <span className="material-symbols-outlined text-lg">
-                  arrow_forward
-                </span>
+                <MaterialIcon name="arrow_forward" className="text-lg" />
               </>
             )}
             {status === "sending" && (
               <>
-                <span className="material-symbols-outlined animate-spin text-lg">
-                  progress_activity
-                </span>
+                <MaterialIcon name="progress_activity" className="animate-spin text-lg" />
                 <span>Sending...</span>
               </>
             )}
             {status === "sent" && (
               <>
-                <span className="material-symbols-outlined text-lg">
-                  check_circle
-                </span>
+                <MaterialIcon name="check_circle" className="text-lg" />
                 <span>Link Sent</span>
               </>
             )}
@@ -144,12 +128,9 @@ export function ForgotPasswordForm() {
         {/* Reassurance / Mindful Tip Banner */}
         <div className="mt-6 w-full bg-surface-container-low rounded-xl p-4 flex items-start gap-3 shadow-2xs">
           <div className="w-8 h-8 rounded-full bg-surface-container shrink-0 flex items-center justify-center text-primary-container">
-            <span
-              className="material-symbols-outlined text-lg"
+            <MaterialIcon name="eco" className="text-lg"
               style={{ fontVariationSettings: "'FILL' 1" }}
-            >
-              eco
-            </span>
+             />
           </div>
           <div className="flex flex-col">
             <span className="text-xs leading-4 text-primary-dark font-semibold mb-0.5">
@@ -191,9 +172,7 @@ export function ForgotPasswordForm() {
         {/* Confirmation Feedback Toast */}
         {status === "sent" && (
           <div className="fixed bottom-6 left-4 right-4 max-w-107.5 mx-auto bg-primary-dark text-on-primary p-4 rounded-xl shadow-xl flex items-center gap-3 transition-opacity z-50">
-            <span className="material-symbols-outlined text-secondary-fixed text-2xl">
-              mark_email_read
-            </span>
+            <MaterialIcon name="mark_email_read" className="text-secondary-fixed text-2xl" />
             <div className="flex-1">
               <p className="text-sm leading-5 font-semibold text-on-primary">
                 Instructions sent

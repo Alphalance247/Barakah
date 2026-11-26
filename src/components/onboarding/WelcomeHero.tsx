@@ -1,6 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BadgeCheck, Hourglass, Sprout, Mail, ArrowRight } from "lucide-react";
+import {
+  MdVerified,
+  MdHourglassTop,
+  MdOutlineEco,
+  MdOutlineMail,
+  MdArrowForward,
+} from "react-icons/md";
 
 export function WelcomeHero() {
   return (
@@ -92,9 +98,9 @@ export function WelcomeHero() {
           <div className="w-full flex items-center justify-center gap-2 mb-8 flex-wrap">
             {/* Pillar 1 */}
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container shadow-2xs">
-              <BadgeCheck
+              <MdVerified
                 size={15}
-                className="text-primary-dark fill-primary-dark stroke-surface-container"
+                className="text-primary-dark shrink-0"
               />
               <span className="text-[11px] leading-3.5 tracking-[0.02em] font-medium text-on-surface">
                 100% Verified Scholars
@@ -103,7 +109,7 @@ export function WelcomeHero() {
 
             {/* Pillar 2 */}
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container shadow-2xs">
-              <Hourglass size={14} className="text-secondary fill-secondary/20" />
+              <MdHourglassTop size={14} className="text-secondary shrink-0" />
               <span className="text-[11px] leading-3.5 tracking-[0.02em] font-medium text-on-surface">
                 Finite Daily Feed
               </span>
@@ -111,7 +117,7 @@ export function WelcomeHero() {
 
             {/* Pillar 3 */}
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container shadow-2xs">
-              <Sprout size={15} className="text-primary-dark" />
+              <MdOutlineEco size={15} className="text-primary-dark shrink-0" />
               <span className="text-[11px] leading-3.5 tracking-[0.02em] font-medium text-on-surface">
                 No Distractions
               </span>
@@ -146,7 +152,7 @@ export function WelcomeHero() {
                 5 curated reflections ready
               </p>
             </div>
-            <ArrowRight size={20} className="text-primary-container shrink-0" />
+            <MdArrowForward size={20} className="text-primary-container shrink-0" />
           </Link>
 
           {/* Authentication Action Hub */}
@@ -188,7 +194,7 @@ export function WelcomeHero() {
               href="/auth"
               className="w-full flex items-center justify-center gap-2.5 py-3.5 px-6 rounded-full bg-surface-container-lowest text-primary-dark shadow-xs hover:bg-surface-container transition-all duration-200 active:scale-[0.98]"
             >
-              <Mail size={19} className="shrink-0" />
+              <MdOutlineMail size={19} className="shrink-0" />
               <span className="text-sm leading-5 tracking-normal font-semibold">
                 Continue with email
               </span>
@@ -203,7 +209,7 @@ export function WelcomeHero() {
             <span className="text-xs leading-4 font-medium">
               Explore sanctuary as guest
             </span>
-            <ArrowRight
+            <MdArrowForward
               size={15}
               className="group-hover:translate-x-0.5 transition-transform"
             />

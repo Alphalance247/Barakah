@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { BottomNav } from "@/components/layout/BottomNav";
+import { MaterialIcon } from "@/components/common/MaterialIcon";
 
 interface CollectionCarouselCard {
   id: string;
@@ -241,7 +242,7 @@ export function SavedView() {
               aria-label="Search saved items"
               className="w-9 h-9 rounded-full bg-surface-container-low text-primary-dark flex items-center justify-center hover:bg-surface-container transition-colors cursor-pointer"
             >
-              <span className="material-symbols-outlined text-xl">search</span>
+              <MaterialIcon name="search" className="text-xl" />
             </button>
             <button
               type="button"
@@ -249,7 +250,7 @@ export function SavedView() {
               aria-label="Create collection"
               className="w-9 h-9 rounded-full bg-surface-container-low text-primary-dark flex items-center justify-center hover:bg-surface-container transition-colors cursor-pointer"
             >
-              <span className="material-symbols-outlined text-[21px]">add</span>
+              <MaterialIcon name="add" className="text-[21px]" />
             </button>
             <Link
               className="flex items-center justify-center p-0.5 rounded-full hover:opacity-90 transition-opacity ml-1"
@@ -361,16 +362,13 @@ export function SavedView() {
                   : "bg-surface-container text-on-surface font-medium hover:bg-surface-container-high"
               }`}
             >
-              <span
-                className={`material-symbols-outlined text-[15px] ${
+              <MaterialIcon name="notifications_active" className={`text-[15px] ${
                   activeFilter === "reminders"
                     ? "text-secondary-container"
                     : "text-secondary"
                 }`}
                 style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                notifications_active
-              </span>
+               />
               <span>Reminders (2 active)</span>
             </button>
             <button
@@ -403,12 +401,9 @@ export function SavedView() {
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-xl bg-primary-dark text-on-primary flex items-center justify-center shrink-0 shadow-2xs mt-0.5">
-                    <span
-                      className="material-symbols-outlined text-xl"
+                    <MaterialIcon name="notifications_active" className="text-xl"
                       style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      notifications_active
-                    </span>
+                     />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
@@ -440,12 +435,9 @@ export function SavedView() {
           <div className="flex flex-col mt-1">
             <div className="flex items-center justify-between px-4 mb-2.5">
               <div className="flex items-center gap-1.5">
-                <span
-                  className="material-symbols-outlined text-xl text-primary-dark"
+                <MaterialIcon name="folder" className="text-xl text-primary-dark"
                   style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  folder
-                </span>
+                 />
                 <h3 className="text-lg leading-6 text-on-surface font-semibold">
                   Collections
                 </h3>
@@ -457,9 +449,7 @@ export function SavedView() {
                   className="text-xs leading-4 text-primary-dark font-semibold flex items-center gap-0.5 hover:underline cursor-pointer"
                 >
                   <span>See all</span>
-                  <span className="material-symbols-outlined text-base">
-                    chevron_right
-                  </span>
+                  <MaterialIcon name="chevron_right" className="text-base" />
                 </button>
               </div>
             </div>
@@ -482,24 +472,19 @@ export function SavedView() {
                       />
                     ))}
                     <div className="absolute top-1.5 right-1.5 w-6 h-6 rounded-full bg-black/50 backdrop-blur-md text-white flex items-center justify-center">
-                      <span
-                        className="material-symbols-outlined text-[13px]"
+                      <MaterialIcon name={col.topBadgeIcon} className="text-[13px]"
                         style={{
                           fontVariationSettings: col.topBadgeFilled
                             ? "'FILL' 1"
                             : "'FILL' 0",
                         }}
-                      >
-                        {col.topBadgeIcon}
-                      </span>
+                       />
                     </div>
                   </div>
                   <div className="p-2.5 flex flex-col flex-1 justify-between">
                     <div>
                       <div className="flex items-center gap-1 text-[11px] text-on-surface-variant mb-0.5">
-                        <span className="material-symbols-outlined text-xs">
-                          lock
-                        </span>
+                        <MaterialIcon name="lock" className="text-xs" />
                         <span>Private • {col.clipsCount} clips</span>
                       </div>
                       <h4 className="text-sm text-on-surface font-semibold leading-snug line-clamp-1">
@@ -510,9 +495,7 @@ export function SavedView() {
                       className={`text-[11px] mt-1 flex items-center gap-1 ${col.bottomColorClass}`}
                     >
                       {col.bottomIcon && (
-                        <span className="material-symbols-outlined text-[13px]">
-                          {col.bottomIcon}
-                        </span>
+                        <MaterialIcon name={col.bottomIcon} className="text-[13px]" />
                       )}
                       <span>{col.bottomText}</span>
                     </p>
@@ -526,9 +509,7 @@ export function SavedView() {
           <div className="mt-6 flex flex-col">
             <div className="flex items-center justify-between px-4 mb-2">
               <div className="flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-xl text-primary-dark">
-                  video_library
-                </span>
+                <MaterialIcon name="video_library" className="text-xl text-primary-dark" />
                 <h3 className="text-lg leading-6 text-on-surface font-semibold">
                   Reels and posts
                 </h3>
@@ -556,18 +537,14 @@ export function SavedView() {
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
                   <div className="absolute top-2 right-2 text-white drop-shadow-xs">
-                    <span className="material-symbols-outlined text-lg">
-                      {item.topRightIcon}
-                    </span>
+                    <MaterialIcon name={item.topRightIcon} className="text-lg" />
                   </div>
                   <div className="absolute bottom-2 inset-x-2 text-white">
                     <p className="text-[11px] font-semibold leading-tight line-clamp-2">
                       {item.title}
                     </p>
                     <div className="flex items-center gap-1 mt-1 text-[10px] text-white/80">
-                      <span className="material-symbols-outlined text-xs">
-                        {item.metaIcon}
-                      </span>
+                      <MaterialIcon name={item.metaIcon} className="text-xs" />
                       <span>{item.metaLabel}</span>
                     </div>
                   </div>

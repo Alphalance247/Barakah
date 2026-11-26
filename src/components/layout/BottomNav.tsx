@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { MaterialIcon } from "@/components/common/MaterialIcon";
 
 export type NavTab = "home" | "library" | "submit" | "saved" | "profile";
 
@@ -51,15 +52,11 @@ export function BottomNav({
                 : "text-on-surface-variant hover:text-primary-dark"
           }`}
         >
-          <span
-            className="material-symbols-outlined text-2xl"
-            style={{
-              fontVariationSettings:
-                currentTab === "home" ? "'FILL' 1" : "'FILL' 0",
-            }}
-          >
-            home
-          </span>
+          <MaterialIcon
+            name="home"
+            filled={currentTab === "home"}
+            className="text-2xl"
+          />
           <span className="text-[11px] leading-3.5 tracking-[0.02em] mt-1">
             Home
           </span>
@@ -77,7 +74,11 @@ export function BottomNav({
                 : "text-on-surface-variant hover:text-primary-dark"
           }`}
         >
-          <span className="material-symbols-outlined text-2xl">explore</span>
+          <MaterialIcon
+            name="explore"
+            filled={currentTab === "library"}
+            className="text-2xl"
+          />
           <span className="text-[11px] leading-3.5 tracking-[0.02em] mt-1">
             Library
           </span>
@@ -97,7 +98,7 @@ export function BottomNav({
                 : "w-12 h-12 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-[0_6px_20px_rgba(15,92,77,0.35)] hover:scale-105 active:scale-95 transition-all"
             }
           >
-            <span className="material-symbols-outlined text-[26px]">add</span>
+            <MaterialIcon name="add" className="text-[26px]" />
           </Link>
         </div>
 
@@ -113,7 +114,11 @@ export function BottomNav({
                 : "text-on-surface-variant hover:text-primary-dark"
           }`}
         >
-          <span className="material-symbols-outlined text-2xl">bookmark</span>
+          <MaterialIcon
+            name="bookmark"
+            filled={currentTab === "saved"}
+            className="text-2xl"
+          />
           <span className="text-[11px] leading-3.5 tracking-[0.02em] mt-1">
             Saved
           </span>
@@ -131,7 +136,11 @@ export function BottomNav({
                 : "text-on-surface-variant hover:text-primary-dark"
           }`}
         >
-          <span className="material-symbols-outlined text-2xl">person</span>
+          <MaterialIcon
+            name="person"
+            filled={currentTab === "profile"}
+            className="text-2xl"
+          />
           <span className="text-[11px] leading-3.5 tracking-[0.02em] mt-1">
             Profile
           </span>

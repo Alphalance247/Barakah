@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useTheme } from "@/hooks/useTheme";
 import { BottomNav } from "@/components/layout/BottomNav";
+import { MaterialIcon } from "@/components/common/MaterialIcon";
 
 interface ProfileMediaCard {
   id: string;
@@ -139,9 +140,7 @@ export function ProfileView() {
               className="w-9 h-9 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary-dark flex items-center justify-center transition-colors cursor-pointer"
               aria-label="Account Settings"
             >
-              <span className="material-symbols-outlined text-xl">
-                settings
-              </span>
+              <MaterialIcon name="settings" className="text-xl" />
             </button>
           </div>
         </div>
@@ -169,12 +168,9 @@ export function ProfileView() {
                 className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shadow-2xs"
                 title="Verified Creator"
               >
-                <span
-                  className="material-symbols-outlined text-sm"
+                <MaterialIcon name="verified" className="text-sm"
                   style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  verified
-                </span>
+                 />
               </span>
             </div>
 
@@ -182,19 +178,14 @@ export function ProfileView() {
               <h2 className="text-xl leading-7 font-semibold text-on-surface">
                 {displayName}
               </h2>
-              <span
-                className="material-symbols-outlined text-lg text-secondary"
+              <MaterialIcon name="check_circle" className="text-lg text-secondary"
                 title="Verified"
-              >
-                check_circle
-              </span>
+               />
             </div>
 
             <div className="flex items-center gap-1 mt-1 flex-wrap justify-center">
               <span className="px-2 py-0.5 rounded-full bg-surface-container text-on-tertiary-fixed-variant text-[11px] leading-3.5 font-medium flex items-center gap-1">
-                <span className="material-symbols-outlined text-xs text-primary-dark">
-                  verified_user
-                </span>
+                <MaterialIcon name="verified_user" className="text-xs text-primary-dark" />
                 Verified Creator • Tadabbur
               </span>
               <span className="text-outline text-[13px] leading-4.5">•</span>
@@ -246,18 +237,14 @@ export function ProfileView() {
                 onClick={() => setIsEditingProfile((prev) => !prev)}
                 className="flex-1 py-1.5 px-2 rounded-lg bg-primary-dark text-on-primary text-xs leading-4 font-medium shadow-2xs hover:opacity-90 transition-opacity flex items-center justify-center gap-1 cursor-pointer"
               >
-                <span className="material-symbols-outlined text-base">
-                  edit
-                </span>
+                <MaterialIcon name="edit" className="text-base" />
                 <span>Edit Profile</span>
               </button>
               <Link
                 href="/creator/dr-omar-farooq"
                 className="py-1.5 px-2.5 rounded-lg bg-surface-container-low text-primary-dark hover:bg-surface-container text-xs leading-4 font-medium transition-colors flex items-center justify-center gap-1"
               >
-                <span className="material-symbols-outlined text-base">
-                  workspace_premium
-                </span>
+                <MaterialIcon name="workspace_premium" className="text-base" />
                 <span>Scholar Status</span>
               </Link>
               <button
@@ -268,7 +255,7 @@ export function ProfileView() {
                 className="w-9 h-9 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-primary-dark flex items-center justify-center transition-colors shrink-0 cursor-pointer"
                 aria-label="Share Profile"
               >
-                <span className="material-symbols-outlined text-lg">share</span>
+                <MaterialIcon name="share" className="text-lg" />
               </button>
             </div>
 
@@ -317,9 +304,7 @@ export function ProfileView() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-lg bg-tertiary-fixed/70 text-on-tertiary-fixed-variant flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-lg">
-                      self_improvement
-                    </span>
+                    <MaterialIcon name="self_improvement" className="text-lg" />
                   </div>
                   <div className="flex flex-col min-w-0">
                     <span className="text-sm leading-5 text-on-surface font-semibold">
@@ -338,9 +323,7 @@ export function ProfileView() {
                   }}
                   className="text-primary-dark text-[11px] leading-3.5 font-semibold hover:underline focus:outline-none flex items-center gap-0.5 cursor-pointer shrink-0"
                 >
-                  <span className="material-symbols-outlined text-sm">
-                    tune
-                  </span>
+                  <MaterialIcon name="tune" className="text-sm" />
                   <span>Adjust Limit</span>
                 </button>
               </div>
@@ -369,15 +352,11 @@ export function ProfileView() {
 
               <div className="flex items-center justify-between text-[13px] leading-4.5 text-on-surface-variant pt-0.5">
                 <span className="flex items-center gap-1 text-[11px] leading-3.5">
-                  <span className="material-symbols-outlined text-[13px]">
-                    schedule
-                  </span>
+                  <MaterialIcon name="schedule" className="text-[13px]" />
                   <span>Resets every Fajr prayer (05:12 AM)</span>
                 </span>
                 <span className="text-[11px] leading-3.5 text-primary-dark font-medium flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[13px]">
-                    spa
-                  </span>
+                  <MaterialIcon name="spa" className="text-[13px]" />
                   Intentional
                 </span>
               </div>
@@ -396,9 +375,7 @@ export function ProfileView() {
                     : "font-medium text-on-surface-variant hover:text-primary-dark"
                 }`}
               >
-                <span className="material-symbols-outlined text-base">
-                  video_library
-                </span>
+                <MaterialIcon name="video_library" className="text-base" />
                 <span>Lectures (8)</span>
               </button>
               <button
@@ -410,9 +387,7 @@ export function ProfileView() {
                     : "font-medium text-on-surface-variant hover:text-primary-dark"
                 }`}
               >
-                <span className="material-symbols-outlined text-base">
-                  bookmark
-                </span>
+                <MaterialIcon name="bookmark" className="text-base" />
                 <span>Saved (24)</span>
               </button>
               <button
@@ -424,9 +399,7 @@ export function ProfileView() {
                     : "font-medium text-on-surface-variant hover:text-primary-dark"
                 }`}
               >
-                <span className="material-symbols-outlined text-base">
-                  pending_actions
-                </span>
+                <MaterialIcon name="pending_actions" className="text-base" />
                 <span>Submissions (3)</span>
               </button>
             </div>
@@ -441,9 +414,7 @@ export function ProfileView() {
                   {item.isPendingCard ? (
                     <div className="relative w-full h-32 bg-surface-container-highest flex items-center justify-center">
                       <div className="text-center p-2">
-                        <span className="material-symbols-outlined text-[28px] text-on-secondary-fixed-variant">
-                          schedule
-                        </span>
+                        <MaterialIcon name="schedule" className="text-[28px] text-on-secondary-fixed-variant" />
                         <p className="text-[11px] leading-3.5 text-on-secondary-fixed-variant mt-1 font-semibold">
                           Pending Review
                         </p>
@@ -462,9 +433,7 @@ export function ProfileView() {
                       <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
                       {item.topBadgeVariant === "verified" ? (
                         <span className="absolute top-2 left-2 px-1 py-0.5 rounded-xs bg-surface/90 backdrop-blur-xs text-primary-dark text-[10px] font-semibold flex items-center gap-0.5">
-                          <span className="material-symbols-outlined text-[10px]">
-                            verified
-                          </span>
+                          <MaterialIcon name="verified" className="text-[10px]" />
                           {item.topBadgeLabel}
                         </span>
                       ) : (
@@ -489,9 +458,7 @@ export function ProfileView() {
                         </span>
                       ) : (
                         <span className="flex items-center gap-0.5">
-                          <span className="material-symbols-outlined text-[13px]">
-                            visibility
-                          </span>
+                          <MaterialIcon name="visibility" className="text-[13px]" />
                           <span>{item.viewsOrSubmittedLabel}</span>
                         </span>
                       )}
@@ -530,9 +497,7 @@ export function ProfileView() {
               <div className="w-full flex items-center justify-between py-2 px-1">
                 <div className="flex items-center gap-2 min-w-0">
                   <div className="w-8 h-8 rounded-full bg-surface-container text-primary-dark flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-lg">
-                      dark_mode
-                    </span>
+                    <MaterialIcon name="dark_mode" className="text-lg" />
                   </div>
                   <span className="text-xs leading-4 text-on-surface font-medium">
                     Dark mode
@@ -568,9 +533,7 @@ export function ProfileView() {
               >
                 <div className="flex items-center gap-2 min-w-0">
                   <div className="w-8 h-8 rounded-full bg-surface-container text-primary-dark flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-lg">
-                      notifications
-                    </span>
+                    <MaterialIcon name="notifications" className="text-lg" />
                   </div>
                   <div className="flex flex-col min-w-0">
                     <span className="text-xs leading-4 text-on-surface font-medium">
@@ -581,9 +544,10 @@ export function ProfileView() {
                     </span>
                   </div>
                 </div>
-                <span className="material-symbols-outlined text-lg text-on-surface-variant">
-                  chevron_right
-                </span>
+                <MaterialIcon
+                  name="chevron_right"
+                  className="text-lg text-on-surface-variant"
+                />
               </button>
 
               {/* Log out */}
@@ -594,9 +558,7 @@ export function ProfileView() {
               >
                 <div className="flex items-center gap-2 min-w-0">
                   <div className="w-8 h-8 rounded-full bg-surface-container-low text-on-surface-variant flex items-center justify-center shrink-0">
-                    <span className="material-symbols-outlined text-lg">
-                      logout
-                    </span>
+                    <MaterialIcon name="logout" className="text-lg" />
                   </div>
                   <span className="text-xs leading-4 text-on-surface-variant font-medium">
                     Log out
@@ -623,9 +585,7 @@ export function ProfileView() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0">
-                  <span className="material-symbols-outlined text-lg">
-                    self_improvement
-                  </span>
+                  <MaterialIcon name="self_improvement" className="text-lg" />
                 </div>
                 <h3 className="text-lg leading-6 text-on-surface font-bold">
                   Adjust Watch Limit
@@ -636,7 +596,7 @@ export function ProfileView() {
                 onClick={() => setShowWatchLimitModal(false)}
                 className="w-8 h-8 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary-dark flex items-center justify-center cursor-pointer"
               >
-                <span className="material-symbols-outlined text-lg">close</span>
+                <MaterialIcon name="close" className="text-lg" />
               </button>
             </div>
 
@@ -671,9 +631,10 @@ export function ProfileView() {
             </div>
 
             <div className="p-2.5 rounded-xl bg-surface-container-low border border-surface-container-high/60 flex items-center gap-2">
-              <span className="material-symbols-outlined text-xl text-primary-dark">
-                bedtime
-              </span>
+              <MaterialIcon
+                name="bedtime"
+                className="text-xl text-primary-dark"
+              />
               <div className="flex flex-col min-w-0">
                 <span className="text-[11px] leading-3.5 text-on-surface font-semibold">
                   Reset Cycle: Fajr Prayer

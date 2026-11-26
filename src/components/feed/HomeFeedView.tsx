@@ -12,6 +12,7 @@ import {
 } from "@/data/seed";
 import { resolveCreatorSlug } from "@/components/profile";
 import { MAX_CLIP_DURATION_SECONDS } from "@/constants/barakah";
+import { MaterialIcon } from "@/components/common/MaterialIcon";
 
 function formatCompactCount(num: number): string {
   if (num >= 1000) {
@@ -199,7 +200,7 @@ function SingleReelStage({
             aria-label="Search Feed"
             className="w-8 h-8 rounded-full bg-black/35 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/90 active:scale-95 transition-transform"
           >
-            <span className="material-symbols-outlined text-lg">search</span>
+            <MaterialIcon name="search" className="text-lg" />
           </Link>
 
           <button
@@ -211,9 +212,7 @@ function SingleReelStage({
             }}
             className="w-8 h-8 rounded-full bg-black/35 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/90 active:scale-95 transition-transform cursor-pointer"
           >
-            <span className="material-symbols-outlined text-[17px]">
-              {isMuted ? "volume_off" : "volume_up"}
-            </span>
+            <MaterialIcon name={isMuted ? "volume_off" : "volume_up"} className="text-[17px]" />
           </button>
 
           <Link
@@ -242,9 +241,7 @@ function SingleReelStage({
               : "opacity-0 scale-75"
           }`}
         >
-          <span className="material-symbols-outlined text-4xl">
-            {isPlaying ? "pause" : "play_arrow"}
-          </span>
+          <MaterialIcon name={isPlaying ? "pause" : "play_arrow"} className="text-4xl" />
         </div>
       </div>
 
@@ -257,16 +254,13 @@ function SingleReelStage({
           className="flex flex-col items-center group focus:outline-none cursor-pointer"
         >
           <div className="w-11 h-11 rounded-full bg-black/35 backdrop-blur-md border border-white/10 flex items-center justify-center text-white shadow-md active:scale-90 transition-all duration-200">
-            <span
-              className={`material-symbols-outlined text-2xl drop-shadow-md transition-colors ${
+            <MaterialIcon name="favorite" className={`text-2xl drop-shadow-md transition-colors ${
                 isLiked ? "text-error" : ""
               }`}
               style={{
                 fontVariationSettings: isLiked ? "'FILL' 1" : "'FILL' 0",
               }}
-            >
-              favorite
-            </span>
+             />
           </div>
           <span className="text-xs leading-4 text-white mt-1 drop-shadow-md font-semibold tracking-tight">
             {displayedLikes}
@@ -280,9 +274,7 @@ function SingleReelStage({
           className="flex flex-col items-center group focus:outline-none cursor-pointer"
         >
           <div className="w-11 h-11 rounded-full bg-black/35 backdrop-blur-md border border-white/10 flex items-center justify-center text-white shadow-md active:scale-90 transition-all duration-200">
-            <span className="material-symbols-outlined text-2xl drop-shadow-md">
-              chat_bubble
-            </span>
+            <MaterialIcon name="chat_bubble" className="text-2xl drop-shadow-md" />
           </div>
           <span className="text-xs leading-4 text-white mt-1 drop-shadow-md font-semibold tracking-tight">
             {clip.commentsCount}
@@ -309,14 +301,13 @@ function SingleReelStage({
                 : "bg-black/35 border border-white/10 text-white"
             }`}
           >
-            <span
-              className="material-symbols-outlined text-2xl drop-shadow-xs"
+            <MaterialIcon
+              name="bookmark"
+              className="text-2xl drop-shadow-xs"
               style={{
                 fontVariationSettings: isBookmarked ? "'FILL' 1" : "'FILL' 0",
               }}
-            >
-              bookmark
-            </span>
+            />
           </div>
           <span
             className={`text-xs leading-4 mt-1 drop-shadow-md font-bold tracking-tight ${
@@ -334,9 +325,7 @@ function SingleReelStage({
           className="flex flex-col items-center group focus:outline-none cursor-pointer"
         >
           <div className="w-11 h-11 rounded-full bg-black/35 backdrop-blur-md border border-white/10 flex items-center justify-center text-white shadow-md active:scale-90 transition-all duration-200">
-            <span className="material-symbols-outlined text-2xl drop-shadow-md">
-              share
-            </span>
+            <MaterialIcon name="share" className="text-2xl drop-shadow-md" />
           </div>
           <span className="text-[11px] leading-3.5 text-white/95 mt-1 drop-shadow-md font-medium">
             Share
@@ -357,10 +346,11 @@ function SingleReelStage({
               className="w-10 h-10 rounded-full object-cover border border-white/40 shadow-md"
               src={clip.avatar}
             />
-            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-secondary-container border border-black/60 flex items-center justify-center">
-              <span className="material-symbols-outlined text-[10px] text-on-secondary-container font-bold">
-                check
-              </span>
+            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-secondary-container border border-black/60 flex items-center justify-center overflow-hidden">
+              <MaterialIcon
+                name="check"
+                className="text-[10px] leading-none text-on-secondary-container font-bold"
+              />
             </div>
           </Link>
 
@@ -371,12 +361,9 @@ function SingleReelStage({
             <span className="text-sm leading-5 text-white font-bold drop-shadow-xs truncate">
               {clip.scholar}
             </span>
-            <span
-              className="material-symbols-outlined text-secondary-container text-base drop-shadow-xs shrink-0"
+            <MaterialIcon name="stars" className="text-secondary-container text-base drop-shadow-xs shrink-0"
               style={{ fontVariationSettings: "'FILL' 1" }}
-            >
-              stars
-            </span>
+             />
             <span className="text-white/60 text-xs font-normal">•</span>
             <span className="text-xs leading-4 text-white/80 truncate drop-shadow-xs">
               {clip.institute}
@@ -395,9 +382,7 @@ function SingleReelStage({
             }}
             className="ml-1 px-3 py-1 rounded-full bg-primary-container/80 hover:bg-primary-container text-primary-fixed border border-primary-fixed/30 backdrop-blur-md text-[11.5px] leading-4 font-semibold tracking-wide active:scale-95 transition-all shrink-0 flex items-center gap-1 shadow-2xs cursor-pointer"
           >
-            <span className="material-symbols-outlined text-[13px]">
-              {isFollowing ? "check" : "add"}
-            </span>
+            <MaterialIcon name={isFollowing ? "check" : "add"} className="text-[13px]" />
             <span>{isFollowing ? "Following" : "Follow"}</span>
           </button>
         </div>
@@ -429,9 +414,7 @@ function SingleReelStage({
 
         {/* Modern Audio / Sound Tag */}
         <div className="flex items-center gap-2 text-white/85 pt-0.5">
-          <span className="material-symbols-outlined text-[15px] animate-pulse">
-            graphic_eq
-          </span>
+          <MaterialIcon name="graphic_eq" className="text-[15px] animate-pulse" />
           <span className="text-xs leading-4 tracking-wide truncate drop-shadow-xs">
             Original Audio — {clip.institute}
           </span>

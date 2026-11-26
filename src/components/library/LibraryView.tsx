@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { resolveCreatorSlug } from "@/components/profile";
+import { MaterialIcon } from "@/components/common/MaterialIcon";
 
 interface PopularClip {
   id: string;
@@ -173,12 +174,9 @@ export function LibraryView() {
             Library
           </span>
           <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-primary-dark text-[11px] leading-3.5 font-medium">
-            <span
-              className="material-symbols-outlined text-[15px]"
+            <MaterialIcon name="verified" className="text-[15px]"
               style={{ fontVariationSettings: "'FILL' 1" }}
-            >
-              verified
-            </span>
+             />
             <span>Curated &amp; Verified</span>
           </div>
         </div>
@@ -192,7 +190,7 @@ export function LibraryView() {
       <section className="px-4 mt-4">
         <div className="relative flex items-center w-full">
           <div className="absolute left-4 flex items-center pointer-events-none text-primary-dark/70">
-            <span className="material-symbols-outlined text-xl">search</span>
+            <MaterialIcon name="search" className="text-xl" />
           </div>
           <input
             value={searchQuery}
@@ -208,7 +206,7 @@ export function LibraryView() {
               className="absolute right-3.5 flex items-center justify-center w-6 h-6 rounded-full bg-surface-container text-on-surface-variant hover:text-primary-dark transition-colors cursor-pointer"
               type="button"
             >
-              <span className="material-symbols-outlined text-base">close</span>
+              <MaterialIcon name="close" className="text-base" />
             </button>
           )}
         </div>
@@ -251,9 +249,7 @@ export function LibraryView() {
             href="/feed"
           >
             See all
-            <span className="material-symbols-outlined text-base">
-              arrow_forward
-            </span>
+            <MaterialIcon name="arrow_forward" className="text-base" />
           </Link>
         </div>
 
@@ -278,9 +274,7 @@ export function LibraryView() {
                   <div className="absolute inset-0 bg-linear-to-t from-primary-dark/90 via-primary-dark/20 to-transparent" />
                   {/* Clip duration badge */}
                   <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface text-[10px] font-semibold flex items-center gap-1 shadow-2xs">
-                    <span className="material-symbols-outlined text-[11px] text-primary-dark">
-                      play_arrow
-                    </span>
+                    <MaterialIcon name="play_arrow" className="text-[11px] text-primary-dark" />
                     <span>{clip.duration}</span>
                   </div>
                   {/* Video Title Overlay inside scrim */}
@@ -304,12 +298,10 @@ export function LibraryView() {
                       {clip.speaker}
                     </span>
                     <span
-                      className="shrink-0 w-3.5 h-3.5 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container"
+                      className="shrink-0 w-3.5 h-3.5 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container overflow-hidden"
                       title="Verified Scholar"
                     >
-                      <span className="material-symbols-outlined text-[10px] font-bold">
-                        check
-                      </span>
+                      <MaterialIcon name="check" className="text-[9px] leading-none font-bold" />
                     </span>
                   </Link>
                   <button
@@ -322,14 +314,11 @@ export function LibraryView() {
                     }`}
                     type="button"
                   >
-                    <span
-                      className="material-symbols-outlined text-lg"
+                    <MaterialIcon name={isSaved ? "bookmark" : "bookmark_border"} className="text-lg"
                       style={{
                         fontVariationSettings: isSaved ? "'FILL' 1" : "'FILL' 0",
                       }}
-                    >
-                      {isSaved ? "bookmark" : "bookmark_border"}
-                    </span>
+                     />
                   </button>
                 </div>
               </div>
@@ -350,9 +339,7 @@ export function LibraryView() {
             </span>
           </div>
           <div className="flex items-center gap-1 text-primary-dark text-[11px] leading-3.5 font-medium">
-            <span className="material-symbols-outlined text-base">
-              grid_view
-            </span>
+            <MaterialIcon name="grid_view" className="text-base" />
             <span>Reels</span>
           </div>
         </div>
@@ -371,9 +358,7 @@ export function LibraryView() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-primary-dark/80 via-transparent to-black/20" />
               <div className="absolute top-2 right-2 text-on-primary flex items-center gap-0.5 text-[10px] font-semibold bg-primary-dark/60 backdrop-blur-xs px-1.5 py-0.5 rounded-full">
-                <span className="material-symbols-outlined text-[11px]">
-                  play_arrow
-                </span>
+                <MaterialIcon name="play_arrow" className="text-[11px]" />
                 <span>{reel.duration}</span>
               </div>
               <div className="absolute bottom-2 inset-x-2 text-on-primary flex flex-col">
@@ -381,9 +366,7 @@ export function LibraryView() {
                   {reel.title}
                 </span>
                 <div className="flex items-center gap-1 mt-1 text-[10px] text-primary-fixed">
-                  <span className="material-symbols-outlined text-xs">
-                    visibility
-                  </span>
+                  <MaterialIcon name="visibility" className="text-xs" />
                   <span>{reel.views}</span>
                 </div>
               </div>
@@ -397,9 +380,7 @@ export function LibraryView() {
         <div className="p-3.5 rounded-lg bg-surface-container flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-primary-dark flex items-center justify-center text-on-primary shadow-2xs">
-              <span className="material-symbols-outlined text-xl">
-                graphic_eq
-              </span>
+              <MaterialIcon name="graphic_eq" className="text-xl" />
             </div>
             <div className="flex flex-col">
               <span className="text-xs leading-4 text-on-surface font-semibold">
@@ -418,12 +399,9 @@ export function LibraryView() {
             className="w-8 h-8 rounded-full bg-surface-container-lowest text-primary-dark flex items-center justify-center shadow-2xs active:scale-95 transition-transform cursor-pointer"
             type="button"
           >
-            <span
-              className="material-symbols-outlined text-lg"
+            <MaterialIcon name={isAdhkarDrawerPlaying ? "pause" : "play_arrow"} className="text-lg"
               style={{ fontVariationSettings: "'FILL' 1" }}
-            >
-              {isAdhkarDrawerPlaying ? "pause" : "play_arrow"}
-            </span>
+             />
           </button>
         </div>
       </section>

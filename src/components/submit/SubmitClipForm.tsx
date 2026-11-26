@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { MaterialIcon } from "@/components/common/MaterialIcon";
 
 export interface UploadedMediaItem {
   id: string;
@@ -243,9 +244,7 @@ export function SubmitClipForm() {
                 className="min-w-11 h-11 px-1 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
                 type="button"
               >
-                <span className="material-symbols-outlined text-2xl">
-                  close
-                </span>
+                <MaterialIcon name="close" className="text-2xl" />
               </button>
             </div>
             <div className="flex-1 text-center">
@@ -262,9 +261,7 @@ export function SubmitClipForm() {
                 <span>Share</span>
               </button>
               <div className="w-8 h-8 rounded-full bg-primary-dark flex items-center justify-center shrink-0">
-                <span className="material-symbols-outlined text-on-primary text-lg">
-                  person
-                </span>
+                <MaterialIcon name="person" className="text-on-primary text-lg" />
               </div>
             </div>
           </div>
@@ -354,9 +351,7 @@ export function SubmitClipForm() {
                       className="h-8 px-2.5 rounded-full bg-surface/85 backdrop-blur-md text-on-surface flex items-center gap-1.5 shadow-2xs active:scale-95 transition-transform cursor-pointer"
                       type="button"
                     >
-                      <span className="material-symbols-outlined text-[17px] text-primary-dark">
-                        aspect_ratio
-                      </span>
+                      <MaterialIcon name="aspect_ratio" className="text-[17px] text-primary-dark" />
                       <span className="text-[11px] leading-3.5 font-semibold tracking-wide">
                         {isSquareRatio ? "1:1" : "9:16"}
                       </span>
@@ -370,9 +365,7 @@ export function SubmitClipForm() {
                         className="h-8 px-2.5 rounded-full bg-surface/85 backdrop-blur-md text-primary-dark flex items-center gap-1 shadow-2xs active:scale-95 transition-transform cursor-pointer"
                         type="button"
                       >
-                        <span className="material-symbols-outlined text-base">
-                          add_photo_alternate
-                        </span>
+                        <MaterialIcon name="add_photo_alternate" className="text-base" />
                         <span className="text-[11px] leading-3.5 font-semibold">
                           Add
                         </span>
@@ -387,9 +380,7 @@ export function SubmitClipForm() {
                             className="w-8 h-8 rounded-full bg-surface/85 backdrop-blur-md text-on-surface flex items-center justify-center shadow-2xs active:scale-95 transition-transform cursor-pointer"
                             type="button"
                           >
-                            <span className="material-symbols-outlined text-lg text-primary-dark">
-                              {isMuted ? "volume_off" : "volume_up"}
-                            </span>
+                            <MaterialIcon name={isMuted ? "volume_off" : "volume_up"} className="text-lg text-primary-dark" />
                           </button>
 
                           {/* Play / Pause Preview Indicator */}
@@ -399,12 +390,9 @@ export function SubmitClipForm() {
                             className="w-8 h-8 rounded-full bg-surface/85 backdrop-blur-md text-on-surface flex items-center justify-center shadow-2xs cursor-pointer"
                             type="button"
                           >
-                            <span
-                              className="material-symbols-outlined text-lg text-primary-dark"
+                            <MaterialIcon name={isPlaying ? "pause" : "play_arrow"} className="text-lg text-primary-dark"
                               style={{ fontVariationSettings: "'FILL' 1" }}
-                            >
-                              {isPlaying ? "pause" : "play_arrow"}
-                            </span>
+                             />
                           </button>
                         </>
                       )}
@@ -429,12 +417,9 @@ export function SubmitClipForm() {
                       className="w-14 h-14 rounded-full bg-surface-container-lowest/85 backdrop-blur-xs flex items-center justify-center shadow-lg opacity-90 hover:scale-105 transition-transform cursor-pointer"
                       type="button"
                     >
-                      <span
-                        className="material-symbols-outlined text-primary-dark text-[32px] ml-0.5"
+                      <MaterialIcon name="play_arrow" className="text-primary-dark text-[32px] ml-0.5"
                         style={{ fontVariationSettings: "'FILL' 1" }}
-                      >
-                        play_arrow
-                      </span>
+                       />
                     </button>
                   )}
                 </div>
@@ -453,9 +438,7 @@ export function SubmitClipForm() {
                   className="w-full h-full flex flex-col items-center justify-center p-6 text-center gap-3 cursor-pointer hover:bg-surface-container-high/70 transition-colors relative"
                 >
                   <div className="w-16 h-16 rounded-full bg-surface-container-lowest shadow-sm flex items-center justify-center text-primary-container">
-                    <span className="material-symbols-outlined text-[32px]">
-                      add_photo_alternate
-                    </span>
+                    <MaterialIcon name="add_photo_alternate" className="text-[32px]" />
                   </div>
                   <div className="flex flex-col gap-1 max-w-72">
                     <h2 className="text-base leading-6 font-semibold text-on-surface">
@@ -468,9 +451,7 @@ export function SubmitClipForm() {
                   </div>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="px-4 py-2 rounded-full bg-primary-container text-on-primary text-xs leading-4 font-semibold shadow-2xs flex items-center gap-1.5">
-                      <span className="material-symbols-outlined text-base">
-                        photo_library
-                      </span>
+                      <MaterialIcon name="photo_library" className="text-base" />
                       Choose Photos or Videos
                     </span>
                   </div>
@@ -484,10 +465,10 @@ export function SubmitClipForm() {
                 <span>{pickerError}</span>
                 <button
                   onClick={() => setPickerError(null)}
-                  className="material-symbols-outlined text-base cursor-pointer"
+                  className="text-base cursor-pointer flex items-center justify-center"
                   type="button"
                 >
-                  close
+                  <MaterialIcon name="close" className="text-base" />
                 </button>
               </div>
             )}
@@ -495,9 +476,7 @@ export function SubmitClipForm() {
             {/* Lecture URL input when LECTURE URL tab is selected */}
             {format === "LECTURE URL" && (
               <div className="mx-4 mt-3 bg-surface-container-lowest rounded-xl p-3 shadow-2xs flex items-center gap-2.5">
-                <span className="material-symbols-outlined text-xl text-primary-dark">
-                  link
-                </span>
+                <MaterialIcon name="link" className="text-xl text-primary-dark" />
                 <input
                   type="url"
                   value={lectureUrl}
@@ -516,15 +495,11 @@ export function SubmitClipForm() {
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-colors active:scale-98 cursor-pointer"
                 type="button"
               >
-                <span className="material-symbols-outlined text-lg text-primary-dark">
-                  folder_open
-                </span>
+                <MaterialIcon name="folder_open" className="text-lg text-primary-dark" />
                 <span className="text-sm leading-5 text-on-surface font-semibold tracking-tight">
                   Device Gallery ({mediaItems.length})
                 </span>
-                <span className="material-symbols-outlined text-lg text-on-surface-variant">
-                  expand_more
-                </span>
+                <MaterialIcon name="expand_more" className="text-lg text-on-surface-variant" />
               </button>
 
               {/* Multi-select & Camera Quick Action */}
@@ -539,9 +514,7 @@ export function SubmitClipForm() {
                   }`}
                   type="button"
                 >
-                  <span className="material-symbols-outlined text-lg">
-                    filter_none
-                  </span>
+                  <MaterialIcon name="filter_none" className="text-lg" />
                   <span className="text-[11px] leading-3.5 font-medium">
                     Select multiple
                   </span>
@@ -554,9 +527,7 @@ export function SubmitClipForm() {
                   className="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-2xs active:scale-95 transition-transform cursor-pointer"
                   type="button"
                 >
-                  <span className="material-symbols-outlined text-[19px]">
-                    photo_camera
-                  </span>
+                  <MaterialIcon name="photo_camera" className="text-[19px]" />
                 </button>
               </div>
             </section>
@@ -570,9 +541,7 @@ export function SubmitClipForm() {
                   className="aspect-square bg-surface-container hover:bg-surface-container-high text-primary-dark rounded-xs flex flex-col items-center justify-center gap-1 p-2 transition-colors cursor-pointer border border-dashed border-primary-dark/30"
                   type="button"
                 >
-                  <span className="material-symbols-outlined text-2xl">
-                    add_photo_alternate
-                  </span>
+                  <MaterialIcon name="add_photo_alternate" className="text-2xl" />
                   <span className="text-[11px] leading-3.5 font-semibold text-center">
                     Add Media
                   </span>
@@ -626,24 +595,18 @@ export function SubmitClipForm() {
                         className="absolute top-1 left-1 w-5 h-5 rounded-full bg-on-surface/65 text-on-primary flex items-center justify-center opacity-85 hover:opacity-100 transition-opacity cursor-pointer"
                         type="button"
                       >
-                        <span className="material-symbols-outlined text-xs">
-                          close
-                        </span>
+                        <MaterialIcon name="close" className="text-xs" />
                       </button>
 
                       {/* Active Checkmark Indicator Badge */}
                       {isSelected ? (
-                        <div className="absolute top-1.5 right-1.5 w-5 h-5 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-2xs">
-                          <span className="material-symbols-outlined text-sm font-bold">
-                            check
-                          </span>
+                        <div className="absolute top-1.5 right-1.5 w-5 h-5 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-2xs overflow-hidden">
+                          <MaterialIcon name="check" className="text-xs leading-none font-bold" />
                         </div>
                       ) : (
                         item.mediaType === "image" && (
                           <span className="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-on-surface/40 flex items-center justify-center text-on-primary">
-                            <span className="material-symbols-outlined text-[11px]">
-                              image
-                            </span>
+                            <MaterialIcon name="image" className="text-[11px]" />
                           </span>
                         )
                       )}
@@ -713,7 +676,7 @@ export function SubmitClipForm() {
               className="min-w-11 h-11 px-1 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
               type="button"
             >
-              <span className="material-symbols-outlined text-2xl">close</span>
+              <MaterialIcon name="close" className="text-2xl" />
             </button>
           </div>
           <div className="flex-1 text-center">
@@ -730,9 +693,7 @@ export function SubmitClipForm() {
               <span>Share</span>
             </button>
             <div className="w-8 h-8 rounded-full bg-primary-dark flex items-center justify-center shrink-0">
-              <span className="material-symbols-outlined text-on-primary text-lg">
-                person
-              </span>
+              <MaterialIcon name="person" className="text-on-primary text-lg" />
             </div>
           </div>
         </div>
@@ -767,9 +728,7 @@ export function SubmitClipForm() {
                     )
                   ) : (
                     <div className="flex flex-col items-center justify-center text-primary-dark p-2 text-center">
-                      <span className="material-symbols-outlined text-2xl">
-                        link
-                      </span>
+                      <MaterialIcon name="link" className="text-2xl" />
                       <span className="text-[10px] leading-3.5 font-medium mt-1">
                         Lecture URL
                       </span>
@@ -778,14 +737,11 @@ export function SubmitClipForm() {
 
                   <div className="absolute inset-0 bg-linear-to-t from-primary-dark/80 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute bottom-1.5 left-1.5 px-1.5 py-0.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md flex items-center gap-1 shadow-2xs">
-                    <span
-                      className="material-symbols-outlined text-[13px] text-primary-dark"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      {activeItem?.mediaType === "image"
+                    <MaterialIcon name={activeItem?.mediaType === "image"
                         ? "image"
-                        : "play_arrow"}
-                    </span>
+                        : "play_arrow"} className="text-[13px] text-primary-dark"
+                      style={{ fontVariationSettings: "'FILL' 1" }}
+                     />
                     <span className="text-[10px] leading-3.5 text-primary-dark font-semibold tracking-tight">
                       {activeItem
                         ? activeItem.mediaType === "video"
@@ -800,9 +756,7 @@ export function SubmitClipForm() {
                     className="absolute top-1.5 right-1.5 w-6 h-6 rounded-full bg-surface-container-lowest/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary-dark transition-colors cursor-pointer"
                     type="button"
                   >
-                    <span className="material-symbols-outlined text-sm">
-                      edit
-                    </span>
+                    <MaterialIcon name="edit" className="text-sm" />
                   </button>
                 </div>
 
@@ -827,9 +781,7 @@ export function SubmitClipForm() {
                       className="p-1 rounded-full text-on-surface-variant hover:text-primary-dark transition-colors cursor-pointer"
                       type="button"
                     >
-                      <span className="material-symbols-outlined text-xl">
-                        sentiment_satisfied
-                      </span>
+                      <MaterialIcon name="sentiment_satisfied" className="text-xl" />
                     </button>
                   </div>
                 </div>
@@ -838,9 +790,7 @@ export function SubmitClipForm() {
               {/* Quick Helpful Prompt Chips */}
               <div className="flex items-center gap-1 overflow-x-auto py-0.5">
                 <span className="text-[11px] leading-3.5 font-medium text-outline shrink-0 mr-1 flex items-center gap-1">
-                  <span className="material-symbols-outlined text-[15px] text-secondary">
-                    auto_awesome
-                  </span>
+                  <MaterialIcon name="auto_awesome" className="text-[15px] text-secondary" />
                   Inspire:
                 </span>
                 {INSPIRE_TAGS.map((tag) => (
@@ -859,12 +809,9 @@ export function SubmitClipForm() {
             {/* Quick Automated Verification Callout */}
             <div className="bg-surface-container-low rounded-xl p-4 shadow-2xs flex gap-4 items-start">
               <div className="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center shrink-0 text-primary-dark">
-                <span
-                  className="material-symbols-outlined text-xl"
+                <MaterialIcon name="verified_user" className="text-xl"
                   style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  verified_user
-                </span>
+                 />
               </div>
               <div className="flex-1 flex flex-col gap-1 min-w-0">
                 <div className="flex items-center gap-2">
@@ -896,9 +843,7 @@ export function SubmitClipForm() {
               <div className="flex items-center justify-between px-4 py-3.5 hover:bg-surface-container-low/50 transition-colors group">
                 <div className="flex items-center gap-4 min-w-0 flex-1">
                   <div className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary-dark shrink-0">
-                    <span className="material-symbols-outlined text-xl">
-                      category
-                    </span>
+                    <MaterialIcon name="category" className="text-xl" />
                   </div>
                   <div className="flex flex-col min-w-0 flex-1">
                     <span className="text-xs leading-4 font-medium text-on-surface truncate">
@@ -961,9 +906,7 @@ export function SubmitClipForm() {
                     </div>
                   </div>
                 </div>
-                <span className="material-symbols-outlined text-outline group-hover:text-primary-dark transition-colors text-xl">
-                  chevron_right
-                </span>
+                <MaterialIcon name="chevron_right" className="text-outline group-hover:text-primary-dark transition-colors text-xl" />
               </div>
 
               {/* Item 2: Tag Scholar or Speaker */}
@@ -973,9 +916,7 @@ export function SubmitClipForm() {
               >
                 <div className="flex items-center gap-4 min-w-0 flex-1">
                   <div className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary-dark shrink-0">
-                    <span className="material-symbols-outlined text-xl">
-                      account_circle
-                    </span>
+                    <MaterialIcon name="account_circle" className="text-xl" />
                   </div>
                   <div className="flex flex-col min-w-0 flex-1">
                     <span className="text-xs leading-4 font-medium text-on-surface truncate">
@@ -998,19 +939,14 @@ export function SubmitClipForm() {
                         <span className="text-[13px] leading-4.5 text-on-surface font-medium truncate">
                           {scholarName}
                         </span>
-                        <span
-                          className="material-symbols-outlined text-[15px] text-secondary shrink-0"
+                        <MaterialIcon name="stars" className="text-[15px] text-secondary shrink-0"
                           style={{ fontVariationSettings: "'FILL' 1" }}
-                        >
-                          stars
-                        </span>
+                         />
                       </div>
                     )}
                   </div>
                 </div>
-                <span className="material-symbols-outlined text-outline group-hover:text-primary-dark transition-colors text-xl">
-                  chevron_right
-                </span>
+                <MaterialIcon name="chevron_right" className="text-outline group-hover:text-primary-dark transition-colors text-xl" />
               </div>
 
               {/* Item 3: Attach Quran Reference */}
@@ -1020,12 +956,9 @@ export function SubmitClipForm() {
               >
                 <div className="flex items-center gap-4 min-w-0 flex-1">
                   <div className="w-8 h-8 rounded-full bg-secondary-fixed/50 flex items-center justify-center text-secondary shrink-0">
-                    <span
-                      className="material-symbols-outlined text-xl"
+                    <MaterialIcon name="menu_book" className="text-xl"
                       style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      menu_book
-                    </span>
+                     />
                   </div>
                   <div className="flex flex-col min-w-0 flex-1">
                     <span className="text-xs leading-4 font-medium text-on-surface truncate">
@@ -1055,9 +988,7 @@ export function SubmitClipForm() {
                     )}
                   </div>
                 </div>
-                <span className="material-symbols-outlined text-outline group-hover:text-primary-dark transition-colors text-xl">
-                  chevron_right
-                </span>
+                <MaterialIcon name="chevron_right" className="text-outline group-hover:text-primary-dark transition-colors text-xl" />
               </div>
 
               {/* Item 4: Halal Audio / Recitation Track */}
@@ -1067,9 +998,7 @@ export function SubmitClipForm() {
               >
                 <div className="flex items-center gap-4 min-w-0 flex-1">
                   <div className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary-dark shrink-0">
-                    <span className="material-symbols-outlined text-xl">
-                      graphic_eq
-                    </span>
+                    <MaterialIcon name="graphic_eq" className="text-xl" />
                   </div>
                   <div className="flex flex-col min-w-0 flex-1">
                     <span className="text-xs leading-4 font-medium text-on-surface truncate">
@@ -1089,9 +1018,7 @@ export function SubmitClipForm() {
                       />
                     ) : (
                       <div className="flex items-center gap-1.5 mt-0.5">
-                        <span className="material-symbols-outlined text-sm text-primary-dark">
-                          music_note
-                        </span>
+                        <MaterialIcon name="music_note" className="text-sm text-primary-dark" />
                         <span className="text-[13px] leading-4.5 text-on-surface-variant truncate">
                           {audioTrack}
                         </span>
@@ -1099,9 +1026,7 @@ export function SubmitClipForm() {
                     )}
                   </div>
                 </div>
-                <span className="material-symbols-outlined text-outline group-hover:text-primary-dark transition-colors text-xl">
-                  chevron_right
-                </span>
+                <MaterialIcon name="chevron_right" className="text-outline group-hover:text-primary-dark transition-colors text-xl" />
               </div>
 
               {/* Item 5: Location / Sanctuary (Optional) */}
@@ -1111,9 +1036,7 @@ export function SubmitClipForm() {
               >
                 <div className="flex items-center gap-4 min-w-0 flex-1">
                   <div className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary-dark shrink-0">
-                    <span className="material-symbols-outlined text-xl">
-                      location_on
-                    </span>
+                    <MaterialIcon name="location_on" className="text-xl" />
                   </div>
                   <div className="flex flex-col min-w-0 flex-1">
                     <span className="text-xs leading-4 font-medium text-on-surface truncate">
@@ -1139,9 +1062,7 @@ export function SubmitClipForm() {
                     )}
                   </div>
                 </div>
-                <span className="material-symbols-outlined text-outline group-hover:text-primary-dark transition-colors text-xl">
-                  chevron_right
-                </span>
+                <MaterialIcon name="chevron_right" className="text-outline group-hover:text-primary-dark transition-colors text-xl" />
               </div>
             </div>
 
@@ -1157,9 +1078,7 @@ export function SubmitClipForm() {
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4 min-w-0">
                   <div className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary-dark shrink-0">
-                    <span className="material-symbols-outlined text-[19px]">
-                      forum
-                    </span>
+                    <MaterialIcon name="forum" className="text-[19px]" />
                   </div>
                   <div className="flex flex-col min-w-0">
                     <span className="text-xs leading-4 font-medium text-on-surface">
@@ -1191,9 +1110,7 @@ export function SubmitClipForm() {
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4 min-w-0">
                   <div className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary-dark shrink-0">
-                    <span className="material-symbols-outlined text-[19px]">
-                      explore
-                    </span>
+                    <MaterialIcon name="explore" className="text-[19px]" />
                   </div>
                   <div className="flex flex-col min-w-0">
                     <span className="text-xs leading-4 font-medium text-on-surface">
@@ -1227,9 +1144,7 @@ export function SubmitClipForm() {
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4 min-w-0">
                   <div className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-secondary shrink-0">
-                    <span className="material-symbols-outlined text-[19px]">
-                      auto_stories
-                    </span>
+                    <MaterialIcon name="auto_stories" className="text-[19px]" />
                   </div>
                   <div className="flex flex-col min-w-0">
                     <span className="text-xs leading-4 font-medium text-on-surface">
@@ -1267,16 +1182,13 @@ export function SubmitClipForm() {
                 className="w-full h-13 py-3 px-6 rounded-full bg-primary-dark text-on-primary text-sm leading-5 font-semibold shadow-md hover:bg-primary-container active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
                 type="button"
               >
-                <span
-                  className="material-symbols-outlined text-xl"
+                <MaterialIcon name="send" className="text-xl"
                   style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  send
-                </span>
+                 />
                 <span>Share to Barakah</span>
               </button>
               <div className="flex items-center justify-center gap-1.5 text-center text-outline">
-                <span className="material-symbols-outlined text-sm">lock</span>
+                <MaterialIcon name="lock" className="text-sm" />
                 <span className="text-[11px] leading-3.5 font-medium">
                   Protected by Barakah Sacred Content Trust Protocol
                 </span>
@@ -1287,12 +1199,9 @@ export function SubmitClipForm() {
             {isSubmitted && (
               <div className="bg-tertiary-fixed text-on-tertiary-fixed rounded-xl p-4 flex items-center justify-between gap-3 shadow-2xs">
                 <div className="flex items-center gap-2.5">
-                  <span
-                    className="material-symbols-outlined text-[22px]"
+                  <MaterialIcon name="check_circle" className="text-[22px]"
                     style={{ fontVariationSettings: "'FILL' 1" }}
-                  >
-                    check_circle
-                  </span>
+                   />
                   <div className="flex flex-col">
                     <span className="text-sm leading-5 font-semibold">
                       JazakAllahu Khayran!

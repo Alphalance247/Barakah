@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { containsProfanity } from "@/lib/profanityFilter";
 import { resolveCreatorSlug } from "@/components/profile";
+import { MaterialIcon } from "@/components/common/MaterialIcon";
 
 interface CommentData {
   id: string;
@@ -132,9 +133,7 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
               className="w-8 h-8 rounded-full bg-surface-container-lowest/15 text-on-primary flex items-center justify-center hover:bg-surface-container-lowest/25 transition-colors"
               type="button"
             >
-              <span className="material-symbols-outlined text-lg">
-                volume_up
-              </span>
+              <MaterialIcon name="volume_up" className="text-lg" />
             </button>
           </div>
           <div className="flex items-end justify-between">
@@ -147,9 +146,7 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
               </h2>
             </div>
             <div className="flex items-center gap-1 text-on-primary/90 text-xs leading-4 font-medium shrink-0">
-              <span className="material-symbols-outlined text-lg text-secondary-fixed">
-                star
-              </span>
+              <MaterialIcon name="star" className="text-lg text-secondary-fixed" />
               <span>4.9</span>
             </div>
           </div>
@@ -180,20 +177,15 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
               className="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-all active:scale-95 cursor-pointer"
               type="button"
             >
-              <span className="material-symbols-outlined text-lg">
-                close
-              </span>
+              <MaterialIcon name="close" className="text-lg" />
             </button>
           </div>
 
           {/* Moderation & Sanctity Prompt Notice */}
           <div className="mt-2.5 flex items-center gap-2 px-3 py-2 rounded-xl bg-surface-container-low text-primary-dark">
-            <span
-              className="material-symbols-outlined text-base text-secondary shrink-0"
+            <MaterialIcon name="spa" className="text-base text-secondary shrink-0"
               style={{ fontVariationSettings: "'FILL' 1" }}
-            >
-              spa
-            </span>
+             />
             <p className="text-[13px] leading-4.5 text-on-surface-variant">
               {statusMessage ??
                 "Respectful, beneficial discourse only. Moderated with love."}
@@ -211,12 +203,9 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span
-                      className="material-symbols-outlined text-secondary text-base"
+                    <MaterialIcon name="push_pin" className="text-secondary text-base"
                       style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      push_pin
-                    </span>
+                     />
                     <span className="text-[11px] leading-3.5 text-secondary font-semibold uppercase tracking-wider">
                       Pinned by Speaker
                     </span>
@@ -246,15 +235,12 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
                       </Link>
                       {comment.isVerified && (
                         <span
-                          className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[11px] shadow-2xs"
+                          className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[10px] shadow-2xs overflow-hidden"
                           title="Verified Scholar"
                         >
-                          <span
-                            className="material-symbols-outlined text-xs leading-none"
+                          <MaterialIcon name="verified" className="text-[11px] leading-none"
                             style={{ fontVariationSettings: "'FILL' 1" }}
-                          >
-                            verified
-                          </span>
+                           />
                         </span>
                       )}
                     </div>
@@ -271,16 +257,13 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
                         }`}
                         type="button"
                       >
-                        <span
-                          className="material-symbols-outlined text-lg group-hover:scale-110 transition-transform"
+                        <MaterialIcon name="favorite" className="text-lg group-hover:scale-110 transition-transform"
                           style={{
                             fontVariationSettings: comment.isLiked
                               ? "'FILL' 1"
                               : "'FILL' 0",
                           }}
-                        >
-                          favorite
-                        </span>
+                         />
                         <span className="text-xs leading-4 font-medium">
                           {comment.likes}
                         </span>
@@ -292,9 +275,7 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
                         className="flex items-center gap-1 text-on-surface-variant hover:text-primary-dark text-xs leading-4 font-medium transition-colors cursor-pointer"
                         type="button"
                       >
-                        <span className="material-symbols-outlined text-base">
-                          reply
-                        </span>
+                        <MaterialIcon name="reply" className="text-base" />
                         <span>Reply</span>
                       </button>
                       {comment.replyCount && (
@@ -344,9 +325,7 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
                         className="w-6 h-6 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container transition-colors cursor-pointer"
                         type="button"
                       >
-                        <span className="material-symbols-outlined text-lg">
-                          more_horiz
-                        </span>
+                        <MaterialIcon name="more_horiz" className="text-lg" />
                       </button>
                       {openMenuId === comment.id && (
                         <div className="absolute right-0 top-7 w-28 bg-surface-container-lowest rounded-xl shadow-[0_8px_20px_rgba(15,92,77,0.12)] py-1 z-20 border border-surface-container">
@@ -355,9 +334,7 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
                             className="w-full px-3 py-1.5 text-left text-[11px] leading-3.5 text-error flex items-center gap-1.5 hover:bg-error-container/40 transition-colors cursor-pointer"
                             type="button"
                           >
-                            <span className="material-symbols-outlined text-sm">
-                              flag
-                            </span>
+                            <MaterialIcon name="flag" className="text-sm" />
                             Report
                           </button>
                         </div>
@@ -377,16 +354,13 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
                       }`}
                       type="button"
                     >
-                      <span
-                        className="material-symbols-outlined text-lg group-hover:scale-110 transition-transform"
+                      <MaterialIcon name="favorite" className="text-lg group-hover:scale-110 transition-transform"
                         style={{
                           fontVariationSettings: comment.isLiked
                             ? "'FILL' 1"
                             : "'FILL' 0",
                         }}
-                      >
-                        favorite
-                      </span>
+                       />
                       <span className="text-xs leading-4 font-medium">
                         {comment.likes}
                       </span>
@@ -396,9 +370,7 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
                       className="flex items-center gap-1 text-on-surface-variant hover:text-primary-dark text-xs leading-4 font-medium transition-colors cursor-pointer"
                       type="button"
                     >
-                      <span className="material-symbols-outlined text-base">
-                        reply
-                      </span>
+                      <MaterialIcon name="reply" className="text-base" />
                       <span>Reply</span>
                     </button>
                   </div>
@@ -410,9 +382,7 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
           {/* Quick Reflection Prompt Pill */}
           <div className="mt-1 flex items-center justify-between p-3 rounded-xl bg-surface-container text-on-surface-variant">
             <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary-dark text-lg">
-                auto_awesome
-              </span>
+              <MaterialIcon name="auto_awesome" className="text-primary-dark text-lg" />
               <span className="text-[11px] leading-3.5">
                 Need guidance on drafting your thought?
               </span>
@@ -435,9 +405,7 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
         <div className="fixed bottom-20 inset-x-0 bg-surface-container-lowest/95 backdrop-blur-xl px-4 py-2.5 z-40 max-w-120 mx-auto shadow-[0_-6px_20px_rgba(15,92,77,0.06)]">
           <form onSubmit={handleSubmit} className="flex items-center gap-2">
             <div className="flex-1 flex items-center bg-surface-container-low rounded-full px-3.5 py-2 transition-all focus-within:bg-surface-container focus-within:shadow-xs">
-              <span className="material-symbols-outlined text-outline-variant text-xl mr-2">
-                edit_note
-              </span>
+              <MaterialIcon name="edit_note" className="text-outline-variant text-xl mr-2" />
               <input
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
@@ -452,9 +420,7 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
                 title="Add emoji"
                 type="button"
               >
-                <span className="material-symbols-outlined text-lg">
-                  sentiment_satisfied
-                </span>
+                <MaterialIcon name="sentiment_satisfied" className="text-lg" />
               </button>
             </div>
             <button
@@ -462,9 +428,7 @@ export function CommentsSheet({ onClose }: CommentsSheetProps) {
               className="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0 hover:scale-105 active:scale-95 transition-all shadow-[0_4px_14px_rgba(15,92,77,0.25)] cursor-pointer"
               type="submit"
             >
-              <span className="material-symbols-outlined text-xl">
-                arrow_upward
-              </span>
+              <MaterialIcon name="arrow_upward" className="text-xl" />
             </button>
           </form>
         </div>

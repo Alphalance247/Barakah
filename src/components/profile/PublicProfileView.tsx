@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { BottomNav } from "@/components/layout/BottomNav";
+import { MaterialIcon } from "@/components/common/MaterialIcon";
 
 export interface PublicCreatorProfileData {
   slug: string;
@@ -310,9 +311,7 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
               aria-label="Account Settings"
               className="w-9 h-9 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary-dark flex items-center justify-center transition-colors"
             >
-              <span className="material-symbols-outlined text-xl">
-                settings
-              </span>
+              <MaterialIcon name="settings" className="text-xl" />
             </Link>
           </div>
         </div>
@@ -335,9 +334,7 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
               className="w-10 h-10 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary-dark active:scale-95 transition-all flex items-center justify-center cursor-pointer"
               type="button"
             >
-              <span className="material-symbols-outlined text-[22px]">
-                arrow_back
-              </span>
+              <MaterialIcon name="arrow_back" className="text-[22px]" />
             </button>
             <div className="flex flex-col items-center">
               <span className="text-lg leading-6 font-semibold text-on-surface tracking-tight">
@@ -356,9 +353,7 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
                 className="w-10 h-10 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary-dark active:scale-95 transition-all flex items-center justify-center cursor-pointer"
                 type="button"
               >
-                <span className="material-symbols-outlined text-xl">
-                  ios_share
-                </span>
+                <MaterialIcon name="ios_share" className="text-xl" />
               </button>
               <button
                 aria-label="More options"
@@ -368,9 +363,7 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
                 className="w-10 h-10 rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary-dark active:scale-95 transition-all flex items-center justify-center cursor-pointer"
                 type="button"
               >
-                <span className="material-symbols-outlined text-xl">
-                  more_horiz
-                </span>
+                <MaterialIcon name="more_horiz" className="text-xl" />
               </button>
             </div>
           </div>
@@ -393,24 +386,18 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
                   </div>
                   {/* Verified Badge */}
                   <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-secondary text-surface-container-lowest flex items-center justify-center shadow-md">
-                    <span
-                      className="material-symbols-outlined text-[15px]"
+                    <MaterialIcon name="verified" className="text-[15px]"
                       style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      verified
-                    </span>
+                     />
                   </div>
                 </div>
 
                 <div className="flex flex-col min-w-0 pt-0.5">
                   <div className="flex items-center gap-1 flex-wrap">
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-primary-dark text-[11px] leading-3.5 font-semibold">
-                      <span
-                        className="material-symbols-outlined text-[13px] text-secondary"
+                      <MaterialIcon name="auto_awesome" className="text-[13px] text-secondary"
                         style={{ fontVariationSettings: "'FILL' 1" }}
-                      >
-                        auto_awesome
-                      </span>
+                       />
                       {creator.badgeTitle}
                     </span>
                     <span className="text-[11px] leading-3.5 text-on-surface-variant">
@@ -423,9 +410,7 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
                   </h2>
 
                   <div className="flex items-center gap-1.5 text-on-surface-variant mt-0.5">
-                    <span className="material-symbols-outlined text-base text-primary-dark shrink-0">
-                      school
-                    </span>
+                    <MaterialIcon name="school" className="text-base text-primary-dark shrink-0" />
                     <span className="text-xs leading-4 font-medium truncate">
                       {creator.institution}
                     </span>
@@ -490,9 +475,7 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
                   }`}
                   type="button"
                 >
-                  <span className="material-symbols-outlined text-lg">
-                    {isFollowing ? "check" : "add"}
-                  </span>
+                  <MaterialIcon name={isFollowing ? "check" : "add"} className="text-lg" />
                   <span>{isFollowing ? "Following" : "Follow"}</span>
                 </button>
 
@@ -511,14 +494,11 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
                   }`}
                   type="button"
                 >
-                  <span
-                    className="material-symbols-outlined text-xl"
+                  <MaterialIcon name={alertsOn ? "notifications_active" : "notifications_none"} className="text-xl"
                     style={{
                       fontVariationSettings: alertsOn ? "'FILL' 1" : "'FILL' 0",
                     }}
-                  >
-                    {alertsOn ? "notifications_active" : "notifications_none"}
-                  </span>
+                   />
                 </button>
 
                 <button
@@ -529,9 +509,7 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
                   className="w-11 h-11 shrink-0 rounded-full bg-surface-container text-on-surface-variant hover:text-primary-dark active:scale-95 transition-all flex items-center justify-center cursor-pointer"
                   type="button"
                 >
-                  <span className="material-symbols-outlined text-xl">
-                    send_time_extension
-                  </span>
+                  <MaterialIcon name="send_time_extension" className="text-xl" />
                 </button>
               </div>
             </div>
@@ -541,12 +519,9 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
           <div className="px-4 mt-2">
             <div className="bg-surface-container-low/80 rounded-lg p-2.5 flex items-center gap-2">
               <div className="w-7 h-7 rounded-full bg-primary-fixed flex items-center justify-center shrink-0">
-                <span
-                  className="material-symbols-outlined text-base text-primary-dark"
+                <MaterialIcon name="menu_book" className="text-base text-primary-dark"
                   style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  menu_book
-                </span>
+                 />
               </div>
               <p className="text-[11px] leading-snug text-on-surface-variant">
                 All lectures verified for authentic Hadith citations &amp;
@@ -573,17 +548,14 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
                 role="tab"
                 type="button"
               >
-                <span
-                  className="material-symbols-outlined text-[15px]"
+                <MaterialIcon name="play_circle" className="text-[15px]"
                   style={{
                     fontVariationSettings:
                       activeCategoryTab === "lectures"
                         ? "'FILL' 1"
                         : "'FILL' 0",
                   }}
-                >
-                  play_circle
-                </span>
+                 />
                 Lectures ({creator.tabCounts.lectures})
               </button>
 
@@ -598,17 +570,14 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
                 role="tab"
                 type="button"
               >
-                <span
-                  className="material-symbols-outlined text-[15px]"
+                <MaterialIcon name="electric_bolt" className="text-[15px]"
                   style={{
                     fontVariationSettings:
                       activeCategoryTab === "short-reminders"
                         ? "'FILL' 1"
                         : "'FILL' 0",
                   }}
-                >
-                  electric_bolt
-                </span>
+                 />
                 Short Reminders ({creator.tabCounts.shortReminders})
               </button>
 
@@ -623,15 +592,12 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
                 role="tab"
                 type="button"
               >
-                <span
-                  className="material-symbols-outlined text-[15px]"
+                <MaterialIcon name="collections_bookmark" className="text-[15px]"
                   style={{
                     fontVariationSettings:
                       activeCategoryTab === "series" ? "'FILL' 1" : "'FILL' 0",
                   }}
-                >
-                  collections_bookmark
-                </span>
+                 />
                 Series ({creator.tabCounts.series})
               </button>
             </div>
@@ -686,17 +652,12 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
                     {/* Views and Verified Overlay */}
                     <div className="absolute bottom-2 inset-x-2 flex items-center justify-between text-on-primary">
                       <div className="flex items-center gap-1 text-[11px] leading-3.5">
-                        <span className="material-symbols-outlined text-sm">
-                          visibility
-                        </span>
+                        <MaterialIcon name="visibility" className="text-sm" />
                         {card.views}
                       </div>
-                      <span
-                        className="material-symbols-outlined text-base text-secondary-fixed"
+                      <MaterialIcon name="verified" className="text-base text-secondary-fixed"
                         style={{ fontVariationSettings: "'FILL' 1" }}
-                      >
-                        verified
-                      </span>
+                       />
                     </div>
                   </div>
                   <div className="p-2 flex flex-col">
@@ -714,9 +675,7 @@ export function PublicProfileView({ handle }: PublicProfileViewProps) {
             {/* Quiet End of Feed Affirmation */}
             <div className="mt-6 mb-2 flex flex-col items-center justify-center text-center px-4">
               <div className="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary-container mb-1">
-                <span className="material-symbols-outlined text-lg">
-                  workspace_premium
-                </span>
+                <MaterialIcon name="workspace_premium" className="text-lg" />
               </div>
               <p className="text-xs leading-4 text-on-surface-variant font-medium">
                 You are caught up with {creator.name}&apos;s latest lectures

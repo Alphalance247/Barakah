@@ -1,4 +1,4 @@
-import { CheckCircle2 } from "lucide-react";
+import { MdVerified } from "react-icons/md";
 
 interface VerifiedBadgeProps {
   label?: string;
@@ -15,7 +15,7 @@ export function VerifiedBadge({ label, size = 16 }: VerifiedBadgeProps) {
       className="inline-flex items-center gap-1 text-accent font-medium"
       title="Verified Islamic source"
     >
-      <CheckCircle2 size={size} className="shrink-0 fill-accent/20" />
+      <MdVerified size={size} className="shrink-0" />
       {label ? <span className="text-xs">{label}</span> : null}
     </span>
   );

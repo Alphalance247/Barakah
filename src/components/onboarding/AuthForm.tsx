@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { MaterialIcon } from "@/components/common/MaterialIcon";
 
 interface AuthFormProps {
   initialMode?: "signup" | "login";
@@ -36,9 +37,7 @@ export function AuthForm({ initialMode = "signup" }: AuthFormProps) {
             aria-label="Go back"
             className="w-10 h-10 rounded-full bg-surface-container-lowest shadow-2xs flex items-center justify-center text-on-surface hover:bg-surface-container transition-colors"
           >
-            <span className="material-symbols-outlined text-xl">
-              arrow_back
-            </span>
+            <MaterialIcon name="arrow_back" className="text-xl" />
           </Link>
           <div className="flex flex-col items-center gap-1.5">
             <div className="flex items-center gap-1.5">
@@ -118,9 +117,7 @@ export function AuthForm({ initialMode = "signup" }: AuthFormProps) {
                 Full Name
               </label>
               <div className="relative flex items-center bg-surface-container-lowest rounded-2xl shadow-2xs px-4 py-3.5">
-                <span className="material-symbols-outlined text-outline text-xl mr-3">
-                  person
-                </span>
+                <MaterialIcon name="person" className="text-outline text-xl mr-3" />
                 <input
                   id="fullname"
                   value={fullName}
@@ -142,9 +139,7 @@ export function AuthForm({ initialMode = "signup" }: AuthFormProps) {
               Email Address
             </label>
             <div className="relative flex items-center bg-surface-container-lowest rounded-2xl shadow-2xs px-4 py-3.5">
-              <span className="material-symbols-outlined text-outline text-xl mr-3">
-                mail
-              </span>
+              <MaterialIcon name="mail" className="text-outline text-xl mr-3" />
               <input
                 id="email"
                 value={email}
@@ -175,9 +170,7 @@ export function AuthForm({ initialMode = "signup" }: AuthFormProps) {
               )}
             </div>
             <div className="relative flex items-center bg-surface-container-lowest rounded-2xl shadow-2xs px-4 py-3.5">
-              <span className="material-symbols-outlined text-outline text-xl mr-3">
-                lock
-              </span>
+              <MaterialIcon name="lock" className="text-outline text-xl mr-3" />
               <input
                 id="password"
                 value={password}
@@ -194,9 +187,7 @@ export function AuthForm({ initialMode = "signup" }: AuthFormProps) {
                 className="text-outline hover:text-on-surface transition-colors flex items-center justify-center cursor-pointer"
                 type="button"
               >
-                <span className="material-symbols-outlined text-xl">
-                  {showPassword ? "visibility" : "visibility_off"}
-                </span>
+                <MaterialIcon name={showPassword ? "visibility" : "visibility_off"} className="text-xl" />
               </button>
             </div>
           </div>
@@ -215,9 +206,7 @@ export function AuthForm({ initialMode = "signup" }: AuthFormProps) {
                   Country / Region
                 </label>
                 <div className="relative flex items-center bg-surface-container-lowest rounded-2xl shadow-2xs px-4 py-3.5">
-                  <span className="material-symbols-outlined text-outline text-xl mr-3">
-                    public
-                  </span>
+                  <MaterialIcon name="public" className="text-outline text-xl mr-3" />
                   <select
                     id="country"
                     value={country}
@@ -235,16 +224,12 @@ export function AuthForm({ initialMode = "signup" }: AuthFormProps) {
                     <option value="TR">Turkey 🇹🇷</option>
                     <option value="OTHER">Other Country / Region</option>
                   </select>
-                  <span className="material-symbols-outlined text-outline text-xl absolute right-4 pointer-events-none">
-                    expand_more
-                  </span>
+                  <MaterialIcon name="expand_more" className="text-outline text-xl absolute right-4 pointer-events-none" />
                 </div>
               </div>
 
               {/* <div className="flex items-center gap-1.5 px-1 -mt-1">
-                <span className="material-symbols-outlined text-outline text-sm">
-                  lock
-                </span>
+                <MaterialIcon name="lock" className="text-outline text-sm" />
                 <p className="text-[11px] leading-3.5 text-on-surface-variant">
                   Used gently for prayer times &amp; tailored content. Never
                   shared.
@@ -259,9 +244,7 @@ export function AuthForm({ initialMode = "signup" }: AuthFormProps) {
             type="submit"
           >
             <span>Continue</span>
-            <span className="material-symbols-outlined text-lg">
-              arrow_forward
-            </span>
+            <MaterialIcon name="arrow_forward" className="text-lg" />
           </button>
         </form>
 
@@ -308,12 +291,9 @@ export function AuthForm({ initialMode = "signup" }: AuthFormProps) {
         {/* Bottom Reassurance & Switch Link */}
         <div className="flex flex-col items-center text-center mt-6 gap-2">
           <div className="flex items-center gap-1.5 text-on-surface-variant">
-            <span
-              className="material-symbols-outlined text-base text-primary-container"
+            <MaterialIcon name="verified_user" className="text-base text-primary-container"
               style={{ fontVariationSettings: "'FILL' 1" }}
-            >
-              verified_user
-            </span>
+             />
             <p className="text-[11px] leading-3.5 font-medium">
               No spam, no streaks, no guilt. Your data stays private.
             </p>
